@@ -156,7 +156,7 @@ git pull --no-rebase
 ```
 
 
-## 4. Create a Pull Request
+## 5. Create a Pull Request
 
 After testing your changes on branch `feature/omp-#5` on HPC, if you believe your changes are positive (i.e., no bugs, no performance degradation, etc.), you should create a **Pull Request (PR)** from `feature/omp-#5` to `main` on GitHub.
 
