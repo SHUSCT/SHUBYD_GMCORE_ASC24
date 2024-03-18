@@ -1,0 +1,1042 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      The system is: Linux - 6.5.0-25-generic - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineFortranCompiler.cmake:179 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" succeeded.
+      Compiler: /usr/bin/f95 
+      Build flags: 
+      Id flags: -v 
+      
+      The output was:
+      0
+      Driving: /usr/bin/f95 -v CMakeFortranCompilerId.F -l gfortran -l m -shared-libgcc
+      Using built-in specs.
+      COLLECT_GCC=/usr/bin/f95
+      COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
+      OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+      OFFLOAD_TARGET_DEFAULT=1
+      Target: x86_64-linux-gnu
+      Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+      Thread model: posix
+      Supported LTO compression algorithms: zlib zstd
+      gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
+      COLLECT_GCC_OPTIONS='-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'a-'
+       /usr/lib/gcc/x86_64-linux-gnu/11/f951 CMakeFortranCompilerId.F -ffixed-form -cpp=/tmp/cco1Oi4J.f90 -quiet -v -imultiarch x86_64-linux-gnu CMakeFortranCompilerId.F -quiet -dumpdir a- -dumpbase CMakeFortranCompilerId.F -dumpbase-ext .F -mtune=generic -march=x86-64 -version -fintrinsic-modules-path /usr/lib/gcc/x86_64-linux-gnu/11/finclude -fpre-include=/usr/include/finclude/math-vector-fortran.h -o /tmp/ccdLv2Uy.s
+      GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+      	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+      
+      GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+      ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+      ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"
+      ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+      #include "..." search starts here:
+      #include <...> search starts here:
+       /usr/lib/gcc/x86_64-linux-gnu/11/finclude
+       /usr/lib/gcc/x86_64-linux-gnu/11/include
+       /usr/local/include
+       /usr/include/x86_64-linux-gnu
+       /usr/include
+      End of search list.
+      GNU Fortran2008 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+      	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+      
+      GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+      COLLECT_GCC_OPTIONS='-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'a-'
+       as -v --64 -o /tmp/ccO0zx8M.o /tmp/ccdLv2Uy.s
+      GNU汇编版本 2.38 (x86_64-linux-gnu) 使用BFD版本 (GNU Binutils for Ubuntu) 2.38
+      Reading specs from /usr/lib/gcc/x86_64-linux-gnu/11/libgfortran.spec
+      rename spec lib to liborig
+      COLLECT_GCC_OPTIONS='-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'a-'
+      COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+      LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+      COLLECT_GCC_OPTIONS='-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'a.'
+       /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccahTX2h.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lquadmath -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. /tmp/ccO0zx8M.o -lgfortran -lm -lgcc_s -lgcc -lquadmath -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
+      COLLECT_GCC_OPTIONS='-v' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'a.'
+      
+      
+      Compilation of the Fortran compiler identification source "CMakeFortranCompilerId.F" produced "a.out"
+      
+      The Fortran compiler identification is GNU, found in:
+        /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/3.27.8/CompilerIdFortran/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/3.27.8/CompilerIdC/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeTestFortranCompiler.cmake:20 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:12 (project)"
+    checks:
+      - "Detecting Fortran compiler ABI info"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-YbTqIX"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-YbTqIX"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_Fortran_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-YbTqIX'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d5f9f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_d5f9f.dir/build.make CMakeFiles/cmTC_d5f9f.dir/build
+        gmake[1]: Entering directory '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-YbTqIX'
+        Building Fortran object CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o
+        /usr/bin/f95   -fdiagnostics-color=always   -v -c /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFortranCompilerABI.F90 -o CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/f95
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_d5f9f.dir/'
+         /usr/lib/gcc/x86_64-linux-gnu/11/f951 /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFortranCompilerABI.F90 -cpp=/tmp/ccNqvdYQ.f90 -quiet -v -imultiarch x86_64-linux-gnu /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFortranCompilerABI.F90 -quiet -dumpdir CMakeFiles/cmTC_d5f9f.dir/ -dumpbase CMakeFortranCompilerABI.F90.F90 -dumpbase-ext .F90 -mtune=generic -march=x86-64 -version -fdiagnostics-color=always -fintrinsic-modules-path /usr/lib/gcc/x86_64-linux-gnu/11/finclude -fpre-include=/usr/include/finclude/math-vector-fortran.h -o /tmp/cckjjo1f.s
+        GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-linux-gnu/11/finclude
+         /usr/lib/gcc/x86_64-linux-gnu/11/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        GNU Fortran2008 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_d5f9f.dir/'
+         as -v --64 -o CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o /tmp/cckjjo1f.s
+        GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
+        COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.'
+        Linking Fortran executable cmTC_d5f9f
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5f9f.dir/link.txt --verbose=1
+        /usr/bin/f95  -v CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o -o cmTC_d5f9f 
+        Driving: /usr/bin/f95 -v CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o -o cmTC_d5f9f -l gfortran -l m -shared-libgcc
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/f95
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
+        Reading specs from /usr/lib/gcc/x86_64-linux-gnu/11/libgfortran.spec
+        rename spec lib to liborig
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d5f9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_d5f9f-'
+        COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d5f9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_d5f9f.'
+         /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccysiUtX.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lquadmath -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_d5f9f /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o -lgfortran -lm -lgcc_s -lgcc -lquadmath -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d5f9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_d5f9f.'
+        gmake[1]: Leaving directory '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-YbTqIX'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeTestFortranCompiler.cmake:20 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      Parsed Fortran implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-linux-gnu/11/finclude]
+          add: [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/11/finclude] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/finclude]
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/11/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/11/finclude;/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeTestFortranCompiler.cmake:20 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      Parsed Fortran implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-YbTqIX']
+        ignore line: []
+        ignore line: [Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d5f9f/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_d5f9f.dir/build.make CMakeFiles/cmTC_d5f9f.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-YbTqIX']
+        ignore line: [Building Fortran object CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o]
+        ignore line: [/usr/bin/f95   -fdiagnostics-color=always   -v -c /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFortranCompilerABI.F90 -o CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/f95]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_d5f9f.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/f951 /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFortranCompilerABI.F90 -cpp=/tmp/ccNqvdYQ.f90 -quiet -v -imultiarch x86_64-linux-gnu /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFortranCompilerABI.F90 -quiet -dumpdir CMakeFiles/cmTC_d5f9f.dir/ -dumpbase CMakeFortranCompilerABI.F90.F90 -dumpbase-ext .F90 -mtune=generic -march=x86-64 -version -fdiagnostics-color=always -fintrinsic-modules-path /usr/lib/gcc/x86_64-linux-gnu/11/finclude -fpre-include=/usr/include/finclude/math-vector-fortran.h -o /tmp/cckjjo1f.s]
+        ignore line: [GNU Fortran (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/finclude]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU Fortran2008 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_d5f9f.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o /tmp/cckjjo1f.s]
+        ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-c' '-o' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.']
+        ignore line: [Linking Fortran executable cmTC_d5f9f]
+        ignore line: [/home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5f9f.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/f95  -v CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o -o cmTC_d5f9f ]
+        ignore line: [Driving: /usr/bin/f95 -v CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o -o cmTC_d5f9f -l gfortran -l m -shared-libgcc]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/f95]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
+        ignore line: [Reading specs from /usr/lib/gcc/x86_64-linux-gnu/11/libgfortran.spec]
+        ignore line: [rename spec lib to liborig]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d5f9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_d5f9f-']
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d5f9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_d5f9f.']
+        link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccysiUtX.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lquadmath -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_d5f9f /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o -lgfortran -lm -lgcc_s -lgcc -lquadmath -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccysiUtX.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lquadmath] ==> ignore
+          arg [-plugin-opt=-pass-through=-lm] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_d5f9f] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..]
+          arg [CMakeFiles/cmTC_d5f9f.dir/CMakeFortranCompilerABI.F90.o] ==> ignore
+          arg [-lgfortran] ==> lib [gfortran]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lquadmath] ==> lib [quadmath]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> [/usr/lib]
+        implicit libs: [gfortran;m;gcc_s;gcc;quadmath;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:12 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-WEAhcI"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-WEAhcI"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-WEAhcI'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_22797/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_22797.dir/build.make CMakeFiles/cmTC_22797.dir/build
+        gmake[1]: Entering directory '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-WEAhcI'
+        Building C object CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o -c /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_22797.dir/'
+         /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_22797.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccIMjRzU.s
+        GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"
+        ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/lib/gcc/x86_64-linux-gnu/11/include
+         /usr/local/include
+         /usr/include/x86_64-linux-gnu
+         /usr/include
+        End of search list.
+        GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)
+        	compiled by GNU C version 11.4.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 50eaa2331df977b8016186198deb2d18
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_22797.dir/'
+         as -v --64 -o CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o /tmp/ccIMjRzU.s
+        GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38
+        COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_22797
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22797.dir/link.txt --verbose=1
+        /usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o -o cmTC_22797 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-linux-gnu
+        Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c,ada,c++,go,brig,d,fortran,objc,obj-c++,m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr,amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) 
+        COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/
+        LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_22797' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_22797.'
+         /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cc59FJ6b.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_22797 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_22797' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_22797.'
+        gmake[1]: Leaving directory '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-WEAhcI'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+          add: [/usr/local/include]
+          add: [/usr/include/x86_64-linux-gnu]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/lib/gcc/x86_64-linux-gnu/11/include] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/lib/gcc/x86_64-linux-gnu/11/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-WEAhcI']
+        ignore line: []
+        ignore line: [Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_22797/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_22797.dir/build.make CMakeFiles/cmTC_22797.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-WEAhcI']
+        ignore line: [Building C object CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o -c /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_22797.dir/']
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_22797.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccIMjRzU.s]
+        ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/usr/local/include/x86_64-linux-gnu"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/include-fixed"]
+        ignore line: [ignoring nonexistent directory "/usr/lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/lib/gcc/x86_64-linux-gnu/11/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/include/x86_64-linux-gnu]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C17 (Ubuntu 11.4.0-1ubuntu1~22.04) version 11.4.0 (x86_64-linux-gnu)]
+        ignore line: [	compiled by GNU C version 11.4.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 50eaa2331df977b8016186198deb2d18]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_22797.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o /tmp/ccIMjRzU.s]
+        ignore line: [GNU assembler version 2.38 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.38]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_22797]
+        ignore line: [/home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22797.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o -o cmTC_22797 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-linux-gnu]
+        ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 11.4.0-1ubuntu1~22.04' --with-bugurl=file:///usr/share/doc/gcc-11/README.Bugs --enable-languages=c ada c++ go brig d fortran objc obj-c++ m2 --prefix=/usr --with-gcc-major-version-only --program-suffix=-11 --program-prefix=x86_64-linux-gnu- --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --enable-bootstrap --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-plugin --enable-default-pie --with-system-zlib --enable-libphobos-checking=release --with-target-system-zlib=auto --enable-objc-gc=auto --enable-multiarch --disable-werror --enable-cet --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32 m64 mx32 --enable-multilib --with-tune=generic --enable-offload-targets=nvptx-none=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-nvptx/usr amdgcn-amdhsa=/build/gcc-11-XeT9lY/gcc-11-11.4.0/debian/tmp-gcn/usr --without-cuda-driver --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --with-build-config=bootstrap-lto-lean --enable-link-serialization=2]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 11.4.0 (Ubuntu 11.4.0-1ubuntu1~22.04) ]
+        ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/11/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/11/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_22797' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_22797.']
+        link line: [ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/cc59FJ6b.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_22797 /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc59FJ6b.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-export-dynamic] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-pie] ==> ignore
+          arg [-znow] ==> ignore
+          arg [-zrelro] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_22797] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib]
+          arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+          arg [-L/lib/../lib] ==> dir [/lib/../lib]
+          arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+          arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+          arg [-L/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..]
+          arg [CMakeFiles/cmTC_22797.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+          arg [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o] ==> [/usr/lib/x86_64-linux-gnu/Scrt1.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o] ==> [/usr/lib/x86_64-linux-gnu/crti.o]
+        collapse obj [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o] ==> [/usr/lib/x86_64-linux-gnu/crtn.o]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib] ==> [/usr/lib]
+        collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+        collapse library dir [/lib/../lib] ==> [/lib]
+        collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+        collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+        collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/11/../../..] ==> [/usr/lib]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib/x86_64-linux-gnu/Scrt1.o;/usr/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/usr/lib/x86_64-linux-gnu/crtn.o]
+        implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zACZKo"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zACZKo"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zACZKo'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6d023/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6d023.dir/build.make CMakeFiles/cmTC_6d023.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zACZKo”
+        Building C object CMakeFiles/cmTC_6d023.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -fdiagnostics-color=always -o CMakeFiles/cmTC_6d023.dir/test_mpi.c.o -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zACZKo/test_mpi.c
+        Linking C executable cmTC_6d023
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d023.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic CMakeFiles/cmTC_6d023.dir/test_mpi.c.o -o cmTC_6d023  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zACZKo”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1297 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F77_HEADER"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hcyVAY"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hcyVAY"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F77_HEADER"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hcyVAY'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b741e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b741e.dir/build.make CMakeFiles/cmTC_b741e.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hcyVAY”
+        Building Fortran object CMakeFiles/cmTC_b741e.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hcyVAY/test_mpi.f90 -o CMakeFiles/cmTC_b741e.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_b741e
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b741e.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_b741e.dir/test_mpi.f90.o -o cmTC_b741e  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-hcyVAY”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1298 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F90_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iDDIkW"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iDDIkW"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F90_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iDDIkW'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_77be5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_77be5.dir/build.make CMakeFiles/cmTC_77be5.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iDDIkW”
+        Building Fortran object CMakeFiles/cmTC_77be5.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iDDIkW/test_mpi.f90 -o CMakeFiles/cmTC_77be5.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_77be5
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_77be5.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_77be5.dir/test_mpi.f90.o -o cmTC_77be5  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-iDDIkW”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1299 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F08_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-HIOao3"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-HIOao3"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-HIOao3'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5cf51/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_5cf51.dir/build.make CMakeFiles/cmTC_5cf51.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-HIOao3”
+        Building Fortran object CMakeFiles/cmTC_5cf51.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-HIOao3/test_mpi.f90 -o CMakeFiles/cmTC_5cf51.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_5cf51
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5cf51.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_5cf51.dir/test_mpi.f90.o -o cmTC_5cf51  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-HIOao3”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1707 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test mpiver for Fortran in mode F08_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p46HDZ"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p46HDZ"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_mpiver_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p46HDZ'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_80838/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_80838.dir/build.make CMakeFiles/cmTC_80838.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p46HDZ”
+        Building Fortran object CMakeFiles/cmTC_80838.dir/mpiver.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p46HDZ/mpiver.f90 -o CMakeFiles/cmTC_80838.dir/mpiver.f90.o
+        Linking Fortran executable cmTC_80838
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_80838.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_80838.dir/mpiver.f90.o -o cmTC_80838  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-p46HDZ”
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OPehdN"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OPehdN"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OPehdN'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_686b5/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_686b5.dir/build.make CMakeFiles/cmTC_686b5.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OPehdN”
+        Building C object CMakeFiles/cmTC_686b5.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi  -o CMakeFiles/cmTC_686b5.dir/test_mpi.c.o -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OPehdN/test_mpi.c
+        Linking C executable cmTC_686b5
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_686b5.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic CMakeFiles/cmTC_686b5.dir/test_mpi.c.o -o cmTC_686b5  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OPehdN”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1297 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F77_HEADER"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-JK4qTR"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-JK4qTR"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F77_HEADER"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-JK4qTR'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_6bc4f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_6bc4f.dir/build.make CMakeFiles/cmTC_6bc4f.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-JK4qTR”
+        Building Fortran object CMakeFiles/cmTC_6bc4f.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-JK4qTR/test_mpi.f90 -o CMakeFiles/cmTC_6bc4f.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_6bc4f
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6bc4f.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_6bc4f.dir/test_mpi.f90.o -o cmTC_6bc4f  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-JK4qTR”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1298 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F90_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l22eLb"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l22eLb"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F90_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l22eLb'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b7b74/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b7b74.dir/build.make CMakeFiles/cmTC_b7b74.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l22eLb”
+        Building Fortran object CMakeFiles/cmTC_b7b74.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l22eLb/test_mpi.f90 -o CMakeFiles/cmTC_b7b74.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_b7b74
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b7b74.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_b7b74.dir/test_mpi.f90.o -o cmTC_b7b74  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-l22eLb”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1299 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F08_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-G2Ss5V"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-G2Ss5V"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-G2Ss5V'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_44ece/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_44ece.dir/build.make CMakeFiles/cmTC_44ece.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-G2Ss5V”
+        Building Fortran object CMakeFiles/cmTC_44ece.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-G2Ss5V/test_mpi.f90 -o CMakeFiles/cmTC_44ece.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_44ece
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44ece.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_44ece.dir/test_mpi.f90.o -o cmTC_44ece  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-G2Ss5V”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1707 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test mpiver for Fortran in mode F08_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ynU0Ts"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ynU0Ts"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_mpiver_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ynU0Ts'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d070a/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_d070a.dir/build.make CMakeFiles/cmTC_d070a.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ynU0Ts”
+        Building Fortran object CMakeFiles/cmTC_d070a.dir/mpiver.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ynU0Ts/mpiver.f90 -o CMakeFiles/cmTC_d070a.dir/mpiver.f90.o
+        Linking Fortran executable cmTC_d070a
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d070a.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_d070a.dir/mpiver.f90.o -o cmTC_d070a  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ynU0Ts”
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-X9XYPO"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-X9XYPO"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-X9XYPO'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4922b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4922b.dir/build.make CMakeFiles/cmTC_4922b.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-X9XYPO”
+        Building C object CMakeFiles/cmTC_4922b.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -fdiagnostics-color=always -o CMakeFiles/cmTC_4922b.dir/test_mpi.c.o -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-X9XYPO/test_mpi.c
+        Linking C executable cmTC_4922b
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4922b.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic CMakeFiles/cmTC_4922b.dir/test_mpi.c.o -o cmTC_4922b  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-X9XYPO”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1297 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F77_HEADER"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OL9U0m"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OL9U0m"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F77_HEADER"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OL9U0m'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_a411e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_a411e.dir/build.make CMakeFiles/cmTC_a411e.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OL9U0m”
+        Building Fortran object CMakeFiles/cmTC_a411e.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OL9U0m/test_mpi.f90 -o CMakeFiles/cmTC_a411e.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_a411e
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a411e.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_a411e.dir/test_mpi.f90.o -o cmTC_a411e  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-OL9U0m”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1298 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F90_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-UEzM5B"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-UEzM5B"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F90_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-UEzM5B'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_34835/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_34835.dir/build.make CMakeFiles/cmTC_34835.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-UEzM5B”
+        Building Fortran object CMakeFiles/cmTC_34835.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-UEzM5B/test_mpi.f90 -o CMakeFiles/cmTC_34835.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_34835
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34835.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_34835.dir/test_mpi.f90.o -o cmTC_34835  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-UEzM5B”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1299 (_MPI_try_staged_settings)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test test_mpi for Fortran in mode F08_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xbhS3n"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xbhS3n"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_test_mpi_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xbhS3n'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c877c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c877c.dir/build.make CMakeFiles/cmTC_c877c.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xbhS3n”
+        Building Fortran object CMakeFiles/cmTC_c877c.dir/test_mpi.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xbhS3n/test_mpi.f90 -o CMakeFiles/cmTC_c877c.dir/test_mpi.f90.o
+        Linking Fortran executable cmTC_c877c
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c877c.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_c877c.dir/test_mpi.f90.o -o cmTC_c877c  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-xbhS3n”
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/home/jin/CLion/clion/bin/cmake/linux/x64/share/cmake-3.27/Modules/FindMPI.cmake:1707 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:87 (find_package)"
+    description: "The MPI test mpiver for Fortran in mode F08_MODULE"
+    directories:
+      source: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wNYfj5"
+      binary: "/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wNYfj5"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: "-ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace"
+    buildResult:
+      variable: "MPI_RESULT_Fortran_mpiver_F08_MODULE"
+      cached: true
+      stdout: |
+        Change Dir: '/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wNYfj5'
+        
+        Run Build Command(s): /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3c294/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3c294.dir/build.make CMakeFiles/cmTC_3c294.dir/build
+        gmake[1]: 进入目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wNYfj5”
+        Building Fortran object CMakeFiles/cmTC_3c294.dir/mpiver.f90.o
+        /usr/bin/f95  -I/usr/lib/x86_64-linux-gnu/fortran/gfortran-mod-15/openmpi -I/usr/lib/x86_64-linux-gnu/openmpi/lib -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  -fdiagnostics-color=always -c /home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wNYfj5/mpiver.f90 -o CMakeFiles/cmTC_3c294.dir/mpiver.f90.o
+        Linking Fortran executable cmTC_3c294
+        /home/jin/CLion/clion/bin/cmake/linux/x64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3c294.dir/link.txt --verbose=1
+        /usr/bin/f95 -L/usr/lib/x86_64-linux-gnu/openmpi/lib/fortran/gfortran -ffree-line-length-none -fno-range-check -fallow-argument-mismatch -fallow-invalid-boz -O0 -fcheck=all -g -fbacktrace  CMakeFiles/cmTC_3c294.dir/mpiver.f90.o -o cmTC_3c294  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/openmpi/lib /usr/lib/x86_64-linux-gnu/libmpi_usempif08.so /usr/lib/x86_64-linux-gnu/libmpi_usempi_ignore_tkr.so /usr/lib/x86_64-linux-gnu/libmpi_mpifh.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/libopen-rte.so /usr/lib/x86_64-linux-gnu/libopen-pal.so /usr/lib/x86_64-linux-gnu/libhwloc.so /usr/lib/x86_64-linux-gnu/libevent_core.so /usr/lib/x86_64-linux-gnu/libevent_pthreads.so -lm /usr/lib/x86_64-linux-gnu/libz.so 
+        gmake[1]: 离开目录“/home/jin/CLion/clion/project/SHUBYD_GMCORE/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-wNYfj5”
+        
+      exitCode: 0
+...

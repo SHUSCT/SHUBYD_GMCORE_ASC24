@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/container" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/datetime" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/fiona" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/flogger" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/string" vcs="Git" />
+  </component>
+</project>
