@@ -12,13 +12,13 @@ In order to facilitate clear communication and organization within the team, we 
 
 ### General Format
 
-`<type>/<short-description>-<issue-number>`
+`<type>/<short-description>-#<issue-number>`
 
 ### Types
 
-- For a **feature**: `feature/<feature-name>-<issue-number>`
-- For a **bugfix**: `bugfix/<issue-or-bug-number>-<issue-number>`
-- For a **documentation**: `doc/<documenation-name>-<issue-number>`
+- For a **feature**: `feature/<feature-name>-#<issue-number>`
+- For a **bugfix**: `bugfix/<issue-or-bug-number>-#<issue-number>`
+- For a **documentation**: `doc/<documenation-name>-#<issue-number>`
 
 ### Description
 

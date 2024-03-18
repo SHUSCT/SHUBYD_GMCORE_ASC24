@@ -29,7 +29,7 @@ First list all local branches and check if there is a local branch called `featu
 git branch
 ```
 
-If there is a local branch called `feature/omp-#5`, then switch to it directly, and go to [3. Make Your Contirbution](#3-make-your-contribution) for next step:
+If there is a local branch called `feature/omp-#5`, then switch to it directly:
 
 ```
 git switch feature/omp-#5
@@ -54,8 +54,6 @@ git pull --no-rebase
 - `git pull` only pulls the changes to the branch you are currently on. So switch to the branch before pulling.
 - `--no-rebase` forces to merge the incoming and current changes.
 
-Now, you can go to [3. Make Your Contirbution](#3-make-your-contribution) for next step.
-
 ### 2.2. If There is No Suitable Branch
 
 If there is no suitable branch for your contribution, you have to create an issue on [issues page](https://github.com/jamesnulliu/SHUBYD_GMCORE/issues) to explain:
@@ -69,7 +67,7 @@ Check [Appendix: Examples for Creating Issues](#examples-for-creating-issues) fo
 
 After the issue about "Adding OpenMP Support" is created, you should **remember the issue number**. Suppose the issue number is `5`.
 
-Then you can create a new branch from `main` following the [Branch Naming Convention](./Branch_Naming_Convention.md):
+Then **on your local machine**, you can create a new branch from `main` following the [Branch Naming Convention](./Branch_Naming_Convention.md), and push your local branch to remote:
 
 ```
 # Make sure you are on branch "main".
@@ -86,7 +84,7 @@ git switch -c feature/omp-#5
 git push -u origin feature/omp-#5:feature/omp-#5
 ```
 
-After creating, pushing and pulling, go back to the [branches page](https://github.com/jamesnulliu/PrettyLazy0/branches), you will see a new branch called `feature/omp-#5`.
+If you go back to the [branches page](https://github.com/jamesnulliu/PrettyLazy0/branches), you will see a new branch called `feature/omp-#5`.
 
 Now go to the issue you created, add a comment to mention that you have created a branch for it.
 
