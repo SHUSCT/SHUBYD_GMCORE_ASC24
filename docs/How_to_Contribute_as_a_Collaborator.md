@@ -10,7 +10,7 @@ git clone git@github.com:jamesnulliu/SHUBYD_GMCORE.git GMCORE
 cd GMCORE
 
 python ./pull_libs.py
-python ./pull_data.py
+python ./pull_data.py -p mars
 ```
 
 ## 2. Create/Switch to a Branch
