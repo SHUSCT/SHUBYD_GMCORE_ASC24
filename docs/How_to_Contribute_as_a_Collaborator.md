@@ -240,8 +240,10 @@ Suppose you have commited some changes on branch `B` and pushed to remote reposi
     - Click on the `Create pull request` button. 
     - Provide a title and a detailed description for your PR. **Description is mandatory.**
     - Click on `Create pull request` again to submit your PR.
-    
-    If GitHub warns you there are conflicts and auto-merging is failed, refer to [Appendix: When Conflicts Happen during PR](#when-conflicts-happen-during-pr) for solution.
+
+    💡**Note**: 
+    - **Description is mandatory**. Explain why you made the changes, how you made the changes, and what the changes are. If you believe the issue is solved, mention the issue number in the description, e.g., "Fixes #5", "Close #5", etc.
+    - If GitHub warns you there are conflicts and auto-merging is failed, refer to [Appendix: When Conflicts Happen during PR](#when-conflicts-happen-during-pr) for solution.
 
 
 6. **Respond to Feedback**: Once your PR is submitted, other team members can review your changes, leave comments, and request additional modifications if necessary. Be prepared to respond to feedback and make further commits to your feature branch if required.
