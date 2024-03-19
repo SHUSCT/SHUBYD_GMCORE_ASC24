@@ -51,3 +51,6 @@ src/physics/ccpp/host/CCPP_TYPEDEFS.*
 src/physics/ccpp/host/CCPP_VARIABLES_GMCORE.*
 src/physics/ccpp/host/ccpp_*_cap.F90
 src/physics/ccpp/host/ccpp_static_api.F90
+
+# Test Results
+GMCORE-TESTBED
