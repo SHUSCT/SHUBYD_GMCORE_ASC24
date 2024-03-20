@@ -7,7 +7,7 @@ Install essential softwares:
 sudo apt-get update
 sudo apt-get install build-essential git cmake perl libxml2-dev libcurl4-nss-dev python3
 
-# For RedHat/CentOS/RockeyLinux
+# For RedHat/CentOS/RockyLinux
 sudo yum update
 sudo yum install cmake git perl libxml2 libxml2-devel libcurl-devel python3
 ```
@@ -51,6 +51,17 @@ bash -i gmcore_install_everything.sh
 
 💡**Note**: 
 - Do not forget the `-i` parameter after bash.
+
+**After installation, you should check all log files inside "gmcore-dpds-install/logs" to see if there are any errors.**
+
+If there are no errors, you can remove all installation files:
+
+```bash
+# Suppose you are now in "/xxx/gmcore-dpds-install"
+cd ..
+rm -rf gmcore-dpds-install
+rm gmcore-dpds-install.7z.*
+```
 
 To clone git submodules and download test data, run the following command:
 
