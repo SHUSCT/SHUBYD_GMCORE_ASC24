@@ -290,7 +290,7 @@ Go back to GitHub and navigate to the PR you created.
 You should be able to see that the conflicts have been resolved, and the merge conflict warning has disappeared. 
 
 
-<!-- ##  Delete a Branch
+##  Delete a Branch
 
 If the branch `feature/omp-#5` is no longer needed, you can delete it:
 
@@ -299,5 +299,5 @@ If the branch `feature/omp-#5` is no longer needed, you can delete it:
 # Delete the branch "feature/omp-#5" locally
 git branch -d feature/omp-#5
 # Delete the branch "feature/omp-#5" on remote repo
-git push origin --delete feature/omp-#5
-``` -->
+git push origin -d feature/omp-#5
+```
