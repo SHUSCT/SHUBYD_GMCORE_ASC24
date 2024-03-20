@@ -34,7 +34,7 @@
 *.out
 *.app
 
-build*
+build
 data
 run
 test/

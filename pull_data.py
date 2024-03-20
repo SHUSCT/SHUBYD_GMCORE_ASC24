@@ -18,7 +18,7 @@ if not os.path.isdir(data_root):
 	os.makedirs(data_root)
 os.chdir(data_root)
 if os.path.isdir(args.planet):
-	os.remove(args.planet)
+	run(f'rm -rf {args.planet}')
 
 if args.planet == 'earth':
 	pass

@@ -1,0 +1,76 @@
+# Quick Start
+## Installation
+
+Install essential softwares:
+```bash
+# For Debian/Ubuntu
+sudo apt-get update
+sudo apt-get install build-essential git cmake perl libxml2-dev libcurl4-nss-dev python3
+
+# For RedHat/CentOS/RockeyLinux
+sudo yum update
+sudo yum install cmake git perl libxml2 libxml2-devel libcurl-devel python3
+```
+
+Downlaod [GMCORE Dependencies]().
+
+Extract the files with the following command:
+
+```bash
+7z x gmcore-dpds-install.7z.001
+```
+
+You will get a directory with the following structure:
+
+```
+gmcore-dpds-install/
+├── hdf5-1.14.3/
+│   └── ...
+├── m4-1.4.19/
+│   └── ...
+├── netcdf-c-4.9.2/
+│   └── ...
+├── netcdf-fortran-4.6.1/
+│   └── ...
+├── szip-2.1.1/
+│   └── ...
+├── zlib-1.2.11/
+│   └── ...
+├── gmcore_install_everything.sh
+├── l_BaseKit_p_2024.0.1.46_offline.sh
+└── l_HPCKit_p_2024.0.1.38_offline.sh
+```
+
+Install dependencies with following command:
+
+```bash
+cd gmcore-dpds-install
+
+bash -i gmcore_install_everything.sh
+```
+
+💡**Note**: 
+- Do not forget the `-i` parameter after bash.
+
+To clone git submodules and download test data, run the following command:
+
+```bash
+bash ./scripts/download.sh
+```
+
+## Build
+
+Run the following commands to build the project:
+
+```bash
+bash ./scripts/build.sh
+```
+
+## Test
+
+Run the following commands to test the project:
+
+```bash
+bash ./scripts/test.sh
+```
+
