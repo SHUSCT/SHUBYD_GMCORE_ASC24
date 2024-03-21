@@ -1,7 +1,8 @@
 # Quick Start
 ## Installation
 
-Install essential softwares:
+Install necessary softwares:
+
 ```bash
 # For Debian/Ubuntu
 sudo apt-get update
@@ -12,7 +13,7 @@ sudo yum update
 sudo yum install cmake git perl libxml2 libxml2-devel libcurl-devel python3
 ```
 
-Downlaod [GMCORE Dependencies]().
+Downlaod [GMCORE Dependencies](https://drive.google.com/drive/folders/1B3ya-K4pe8y9rhM83uuGRoLgo2aWEPo1?usp=drive_link).
 
 Extract the files with the following command:
 
@@ -63,9 +64,10 @@ rm -rf gmcore-dpds-install
 rm gmcore-dpds-install.7z.*
 ```
 
-To clone git submodules and download test data, run the following command:
+To clone git submodules and download test data, go to your local repository of SHUBYD-GMCORE and run the following command:
 
 ```bash
+# You should be in root dir of SHUBYD-GMCORE
 bash ./scripts/download.sh
 ```
 
@@ -74,6 +76,7 @@ bash ./scripts/download.sh
 Run the following commands to build the project:
 
 ```bash
+# You should be in root dir of SHUBYD-GMCORE
 bash ./scripts/build.sh
 ```
 
@@ -82,6 +85,7 @@ bash ./scripts/build.sh
 Run the following commands to test the project:
 
 ```bash
+# You should be in root dir of SHUBYD-GMCORE
 bash ./scripts/test.sh
 ```
 
