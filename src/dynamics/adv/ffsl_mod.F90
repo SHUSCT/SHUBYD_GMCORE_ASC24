@@ -215,6 +215,7 @@ contains
       ks = merge(mesh%full_kds, mesh%half_kds, batch%loc == 'cell')
       ke = merge(mesh%full_kde, mesh%half_kde, batch%loc == 'cell')
       ! Calculate intermediate tracer density due to advective operators.
+      !$omp parallel do collapse(2) private(i)
       do k = ks, ke
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
           do i = mesh%full_ids, mesh%full_ide
@@ -238,19 +239,25 @@ contains
       ! Handle the Pole boundary conditions.
       if (mesh%has_south_pole()) then
         j = mesh%full_jds
+        !$omp parallel do private(i, k) collapse(2)
         do k = ks, ke
           do i = mesh%full_ids, mesh%full_ide
             work(i,k) = qmfy%d(i,j,k)
           end do
         end do
+        !$omp end parallel do
+
         call zonal_sum(proc%zonal_circle, work(:,ks:ke), pole(ks:ke))
         pole(ks:ke) = pole(ks:ke) * mesh%le_lat(j) / global_mesh%full_nlon / mesh%area_cell(j)
+        !$omp parallel do private(i, k) collapse(2)
         do k = ks, ke
           do i = mesh%full_ids, mesh%full_ide
             qx%d(i,j,k) = q%d(i,j,k)
             qy%d(i,j,k) = q%d(i,j,k) - 0.5_r8 * (pole(k) - divy%d(i,j,k) * q%d(i,j,k)) * dt_opt
           end do
         end do
+        !$omp end parallel do
+
       end if
       if (mesh%has_north_pole()) then
         j = mesh%full_jde
@@ -422,6 +429,7 @@ contains
     case ('cell', 'lev')
       ks = merge(mesh%full_kds, mesh%half_kds, batch%loc == 'cell')
       ke = merge(mesh%full_kde, mesh%half_kde, batch%loc == 'cell')
+      !$omp parallel do private(ci, cf, iu, s1, s2, ds1, ds2, ds3, ml, dm, m6) collapse(2)
       do k = ks, ke
         ! Along x-axis
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
@@ -451,6 +459,7 @@ contains
             end if
           end do
         end do
+        !$omp end parallel do
         ! Along y-axis
         do j = mesh%half_jds, mesh%half_jde
           do i = mesh%full_ids, mesh%full_ide
