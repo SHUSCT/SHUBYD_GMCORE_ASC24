@@ -462,14 +462,29 @@ contains
       ! Diagnose horizontal mass flux divergence.
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide, 2
             dmf%d(i,j,k) = ((                     &
               mfx%d(i,j,k) - mfx%d(i-1,j,k)       &
             ) * mesh%le_lon(j) + (                &
               mfy%d(i,j  ,k) * mesh%le_lat(j  ) - &
               mfy%d(i,j-1,k) * mesh%le_lat(j-1)   &
             )) / mesh%area_cell(j)
+            dmf%d(i+1,j,k) = ((                     &
+              mfx%d(i+1,j,k) - mfx%d(i,j,k)         &
+            ) * mesh%le_lon(j) + (                  &
+              mfy%d(i+1,j  ,k) * mesh%le_lat(j  ) - &
+              mfy%d(i+1,j-1,k) * mesh%le_lat(j-1)   &
+            )) / mesh%area_cell(j)
           end do
+          if (mod(mesh%full_ide - mesh%full_ids + 1, 2) == 1) then
+            i = mesh%full_ide
+            dmf%d(i,j,k) = ((                     &
+              mfx%d(i,j,k) - mfx%d(i-1,j,k)       &
+            ) * mesh%le_lon(j) + (                &
+              mfy%d(i,j  ,k) * mesh%le_lat(j  ) - &
+              mfy%d(i,j-1,k) * mesh%le_lat(j-1)   &
+            )) / mesh%area_cell(j)
+          end if
         end do
       end do
       if (mesh%has_south_pole()) then
@@ -497,7 +512,17 @@ contains
         call zonal_sum(proc%zonal_circle, work, pole)
         pole = pole * mesh%le_lat(j-1) / global_mesh%full_nlon / mesh%area_cell(j)
         do k = mesh%full_kds, mesh%full_kde
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide, 8
+            dmf%d(i,j,k) = pole(k)
+            dmf%d(i+1,j,k) = pole(k)
+            dmf%d(i+2,j,k) = pole(k)
+            dmf%d(i+3,j,k) = pole(k)
+            dmf%d(i+4,j,k) = pole(k)
+            dmf%d(i+5,j,k) = pole(k)
+            dmf%d(i+6,j,k) = pole(k)
+            dmf%d(i+7,j,k) = pole(k)
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 8), mesh%full_ide
             dmf%d(i,j,k) = pole(k)
           end do
         end do
@@ -506,7 +531,17 @@ contains
       dmgs%d = 0
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds, mesh%full_jde
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide, 8
+            dmgs%d(i,j) = dmgs%d(i,j) - dmf%d(i,j,k)
+            dmgs%d(i+1,j) = dmgs%d(i+1,j) - dmf%d(i+1,j,k)
+            dmgs%d(i+2,j) = dmgs%d(i+2,j) - dmf%d(i+2,j,k)
+            dmgs%d(i+3,j) = dmgs%d(i+3,j) - dmf%d(i+3,j,k)
+            dmgs%d(i+4,j) = dmgs%d(i+4,j) - dmf%d(i+4,j,k)
+            dmgs%d(i+5,j) = dmgs%d(i+5,j) - dmf%d(i+5,j,k)
+            dmgs%d(i+6,j) = dmgs%d(i+6,j) - dmf%d(i+6,j,k)
+            dmgs%d(i+7,j) = dmgs%d(i+7,j) - dmf%d(i+7,j,k)
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 8), mesh%full_ide
             dmgs%d(i,j) = dmgs%d(i,j) - dmf%d(i,j,k)
           end do
         end do
