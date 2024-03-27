@@ -171,6 +171,7 @@ contains
 
     call adv_accum_wind(itime)
 
+    !$omp parallel do
     do iblk = 1, size(blocks)
       associate (block     => blocks(iblk)                  , &
                  dstate    => blocks(iblk)%dstate(itime)    , &
