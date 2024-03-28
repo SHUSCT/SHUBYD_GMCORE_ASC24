@@ -547,17 +547,7 @@ contains
         call zonal_sum(proc%zonal_circle, work, pole)
         pole = pole * mesh%le_lat(j-1) / global_mesh%full_nlon / mesh%area_cell(j)
         do k = mesh%full_kds, mesh%full_kde
-          do i = mesh%full_ids, mesh%full_ide - 8, 8
-            dmf%d(i,j,k) = pole(k)
-            dmf%d(i+1,j,k) = pole(k)
-            dmf%d(i+2,j,k) = pole(k)
-            dmf%d(i+3,j,k) = pole(k)
-            dmf%d(i+4,j,k) = pole(k)
-            dmf%d(i+5,j,k) = pole(k)
-            dmf%d(i+6,j,k) = pole(k)
-            dmf%d(i+7,j,k) = pole(k)
-          end do
-          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 8) + 1, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide
             dmf%d(i,j,k) = pole(k)
           end do
         end do
@@ -566,17 +556,7 @@ contains
       dmgs%d = 0
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds, mesh%full_jde
-          do i = mesh%full_ids, mesh%full_ide - 8, 8
-            dmgs%d(i,j) = dmgs%d(i,j) - dmf%d(i,j,k)
-            dmgs%d(i+1,j) = dmgs%d(i+1,j) - dmf%d(i+1,j,k)
-            dmgs%d(i+2,j) = dmgs%d(i+2,j) - dmf%d(i+2,j,k)
-            dmgs%d(i+3,j) = dmgs%d(i+3,j) - dmf%d(i+3,j,k)
-            dmgs%d(i+4,j) = dmgs%d(i+4,j) - dmf%d(i+4,j,k)
-            dmgs%d(i+5,j) = dmgs%d(i+5,j) - dmf%d(i+5,j,k)
-            dmgs%d(i+6,j) = dmgs%d(i+6,j) - dmf%d(i+6,j,k)
-            dmgs%d(i+7,j) = dmgs%d(i+7,j) - dmf%d(i+7,j,k)
-          end do
-          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 8) + 1, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide
             dmgs%d(i,j) = dmgs%d(i,j) - dmf%d(i,j,k)
           end do
         end do
@@ -584,17 +564,7 @@ contains
       ! Diagnose vertical mass flux.
       do k = mesh%half_kds + 1, mesh%half_kde - 1
         do j = mesh%full_jds, mesh%full_jde
-          do i = mesh%full_ids, mesh%full_ide - 8, 8
-            we%d(i,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i,j)) - sum(dmf%d(i,j,1:k-1))
-            we%d(i+1,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i+1,j)) - sum(dmf%d(i+1,j,1:k-1))
-            we%d(i+2,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i+2,j)) - sum(dmf%d(i+2,j,1:k-1))
-            we%d(i+3,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i+3,j)) - sum(dmf%d(i+3,j,1:k-1))
-            we%d(i+4,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i+4,j)) - sum(dmf%d(i+4,j,1:k-1))
-            we%d(i+5,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i+5,j)) - sum(dmf%d(i+5,j,1:k-1))
-            we%d(i+6,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i+6,j)) - sum(dmf%d(i+6,j,1:k-1))
-            we%d(i+7,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i+7,j)) - sum(dmf%d(i+7,j,1:k-1))
-          end do
-          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 8) + 1, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide
             we%d(i,j,k) = -vert_coord_calc_dmgdt_lev(k, dmgs%d(i,j)) - sum(dmf%d(i,j,1:k-1))
           end do
         end do
