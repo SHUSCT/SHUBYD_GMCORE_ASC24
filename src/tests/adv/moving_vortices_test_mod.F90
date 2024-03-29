@@ -78,9 +78,12 @@ contains
 
     real(r8), intent(in) :: time_in_seconds
     integer, intent(in) :: itime
+    real(8), allocatable :: clat(:), clon(:), slat(:), slon(:),dlon(:),cdlon(:),sdlon(:)
+    real(8) calpha, salpha, slatv, clatv
 
     integer iblk, i, j
-    real(8) lon, lat, dlon, latr
+    real(8) lon, lat, latr
+    integer len1,len2,full_jds_no_pole,full_jde_no_pole,half_ids,half_ide,full_ids,full_ide,half_jds,half_jde
 
     lonvr = lonvr0 + u0 / radius * time_in_seconds
     if (lonvr > pi2) lonvr = lonvr - pi2
@@ -97,27 +100,64 @@ contains
                  mfx     => blocks(iblk)%aux%mfx_lon        , &
                  mfy     => blocks(iblk)%aux%mfy_lat        )
       dmg%d = 1; dmg_lon%d = 1; dmg_lat%d = 1
-      do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-        lat = mesh%full_lat(j)
-        do i = mesh%half_ids, mesh%half_ide
-          lon = mesh%half_lon(i)
-          dlon = lon - lonv
-          call rotate(lonv, latv, lon, lat, lat_r=latr)
-          u%d(i,j,1) = u0 * (cos(lat) * cos(alpha) + sin(lat) * cos(lon) * sin(alpha)) + &
-                       a_omg(latr) * (sin(latv) * cos(lat) - cos(latv) * cos(dlon) * sin(lat))
+      full_jds_no_pole = mesh%full_jds_no_pole
+      full_jde_no_pole = mesh%full_jde_no_pole
+      half_ids = mesh%half_ids
+      half_ide = mesh%half_ide
+      len1 = full_jde_no_pole - full_jds_no_pole + 1
+      len2 = half_ide - half_ids + 1
+      ! Using Intel OneAPI Math Kernel Library
+      allocate(clat(full_jds_no_pole:full_jde_no_pole))
+      allocate(clon(half_ids:half_ide))
+      allocate(slat(full_jds_no_pole:full_jde_no_pole))
+      allocate(slon(half_ids:half_ide))
+      allocate(dlon(half_ids:half_ide))
+      allocate(cdlon(half_ids:half_ide))
+      allocate(sdlon(half_ids:half_ide))
+      call vdcos(len1, mesh%full_lat(full_jds_no_pole:full_jde_no_pole), clat)
+      call vdcos(len2, mesh%half_lon(half_ids:half_ide), clon)
+      call vdsin(len1, mesh%full_lat(full_jds_no_pole:full_jde_no_pole), slat)
+      call vdsin(len2, mesh%half_lon(half_ids:half_ide), slon)
+      call vdsub(len2, mesh%half_lon(half_ids:half_ide), lonv, dlon)
+      call vdcos(len2, dlon(half_ids:half_ide), cdlon)
+      calpha = cos(alpha)
+      salpha = sin(alpha)
+      slatv = sin(latv)
+      clatv = cos(latv)
+      do j = full_jds_no_pole, full_jde_no_pole
+        do i = half_ids, half_ide
+          ! u%d(i,j,1) = u0 * (cos(lat) * cos(alpha) + sin(lat) * cos(lon) * sin(alpha)) + &
+          !              a_omg(latr) * (sin(latv) * cos(lat) - cos(latv) * cos(dlon) * sin(lat))
+          u%d(i,j,1) = u0 * clat(j) * calpha + slat(j) * clon(i) * salpha + &
+                       a_omg(latr) * (slatv * clat(j) - clatv * cdlon(i) * slat(j))
         end do
       end do
+      deallocate(clat,clon,slat,slon,dlon,cdlon,sdlon)
       call fill_halo(u)
       mfx%d = u%d * dmg_lon%d
-      do j = mesh%half_jds, mesh%half_jde
+      len1 = mesh%half_jde - mesh%half_jds + 1
+      len2 = mesh%full_ide - mesh%full_ids + 1
+      full_ids = mesh%full_ids
+      full_ide = mesh%full_ide
+      half_jds = mesh%half_jds
+      half_jde = mesh%half_jde
+      ! Using Intel OneAPI Math Kernel Library
+      allocate(slon(full_ids:full_ide))
+      allocate(dlon(full_ids:full_ide))
+      allocate(sdlon(full_ids:full_ide))
+      call vdsin(len2,mesh%full_lon(full_ids:full_ide),slon)
+      call vdsub(len2,mesh%full_lon(full_ids:full_ide),lonv,dlon)
+      call vdsin(len2,dlon(full_ids:full_ide),sdlon)
+      do j = half_jds, half_jde
         lat = mesh%half_lat(j)
-        do i = mesh%full_ids, mesh%full_ide
+        do i = full_ids, full_ide
           lon = mesh%full_lon(i)
-          dlon = lon - lonv
           call rotate(lonv, latv, lon, lat, lat_r=latr)
-          v%d(i,j,1) = -u0 * sin(lon) * sin(alpha) + a_omg(latr) * cos(latv) * sin(dlon)
+          ! v%d(i,j,1) = -u0 * sin(lon) * sin(alpha) + a_omg(latr) * cos(latv) * sin(dlon)
+          v%d(i,j,1) = -u0 * slon(i) * salpha + a_omg(latr) * clatv * sdlon(i)
         end do
       end do
+      deallocate(slon,dlon,sdlon)
       call fill_halo(v)
       mfy%d = v%d * dmg_lat%d
       end associate
