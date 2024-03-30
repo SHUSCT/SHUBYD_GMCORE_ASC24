@@ -144,6 +144,7 @@ contains
       call fill_halo(v)
       mfy%d = v%d
       end associate
+      deallocate(coslon, sinlon)
     end do
 
   end subroutine solid_rotation_test_set_uv
