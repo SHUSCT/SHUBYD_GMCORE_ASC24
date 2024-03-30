@@ -412,8 +412,8 @@ contains
     type(latlon_field3d_type), intent(inout) :: mfx
     type(latlon_field3d_type), intent(inout) :: mfy
 
-    integer ks, ke, i, j, k, iu, ju, ci
-    real(r8) cf, s1, s2, ds1, ds2, ds3, ml, dm, m6
+    integer ks, ke, i, j, k, iu, ju, ci1, ci2
+    real(r8) cf1, cf2, s1, s2, ds1, ds2, ds3, ml, dm, m6
 
     associate (mesh => u%mesh    , &
                cflx => batch%cflx, & ! in
@@ -430,33 +430,51 @@ contains
                     mfx%d(i,j,k) = 0
                     mfx%d(i+1,j,k) = 0
                 else
-                    ci = int(cflx%d(i,j,k))
-                    cf = cflx%d(i,j,k) - ci
+                    ci1 = int(cflx%d(i,j,k))
+                    cf1 = cflx%d(i,j,k) - ci1
+                    ci2 = int(cflx%d(i,j,k))
+                    cf2 = cflx%d(i,j,k) - ci2
                     if (abs(cflx%d(i,j,k)) < 1.0e-16_r8) then
                         mfx%d(i,j,k) = 0
                     else if (abs(cflx%d(i+1,j,k)) < 1.0e-16_r8) then
                         mfx%d(i+1,j,k) = 0
-                    else
+                      else
                         if (cflx%d(i,j,k) > 0) then
-                            iu = i - ci
+                            iu = i - ci1
                             call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
-                            s1 = 1 - cf
+                            s1 = 1 - cf1
                             s2 = 1
                             ds1 = s2 - s1
                             ds2 = s2**2 - s1**2
                             ds3 = s2**3 - s1**3
                             mfx%d(i,j,k) =  u%d(i,j,k) * (sum(mx%d(iu+1:i,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i,j,k)
-                            mfx%d(i+1,j,k) =  u%d(i+1,j,k) * (sum(mx%d(iu+2:i+1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i+1,j,k)
-                        else
-                            iu = i - ci + 1
+                          else if (cflx%d(i+1,j,k) > 0) then
+                            iu = i+1 - ci2
                             call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
-                            s1 = 0
-                            s2 = -cf
+                            s1 = 1 - cf2
+                            s2 = 1
                             ds1 = s2 - s1
                             ds2 = s2**2 - s1**2
                             ds3 = s2**3 - s1**3
+                            mfx%d(i+1,j,k) =  u%d(i+1,j,k) * (sum(mx%d(iu+2:i+1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i+1,j,k)
+                          else if (cflx%d(i,j,k) <= 0) then
+                            iu = i - ci1 + 1
+                            call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
+                            s1 = 0
+                            s2 = -cf1
+                            ds1 = s2    - s1
+                            ds2 = s2**2 - s1**2
+                            ds3 = s2**3 - s1**3
                             mfx%d(i,j,k) = -u%d(i,j,k) * (sum(mx%d(i+1:iu-1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i,j,k)
-                            mfx%d(i+1,j,k) = -u%d(i+1,j,k) * (sum(mx%d(i+2:iu,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i+1,j,k)
+                          else if (cflx%d(i+1,j,k) <= 0) then
+                            iu = i - ci2 + 1
+                            call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
+                            s1 = 0
+                            s2 = -cf2
+                            ds1 = s2    - s1
+                            ds2 = s2**2 - s1**2
+                            ds3 = s2**3 - s1**3
+                            mfx%d(i+1,j,k) = -u%d(i+1,j,k) * (sum(mx%d(i+2:iu-1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i+1,j,k)
                         end if
                     end if
                 end if
