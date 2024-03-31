@@ -125,11 +125,19 @@ contains
           else
             x%d(:,j,k) = tmp
           end if
-        else if (present(y)) then
-          y%d(:,j,k) = x%d(:,j,k)
         end if
       end do
     end do
+
+    if (present(y)) then
+      do k = ks, ke
+        do j = js, je
+          if (ngrid(j) <= 1) then
+            y%d(:,j,k) = x%d(:,j,k)
+          end if
+        end do
+      end do
+    end if
 
     call perf_stop('filter_run_3d')
 
