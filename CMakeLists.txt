@@ -70,11 +70,12 @@ elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID 
   else ()  # Release
     list(APPEND fortran_flags
       -no-wrap-margin
-      -O5
+      -O3
       -align array64byte
       -qopenmp
-      -unroll=8
-      # -fp-model precise
+      -fp-model precise
+      -fast
+      -qmkl=sequential
     )
   endif ()
   if (CMAKE_Fortran_COMPILER_VERSION GREATER 2021.1)
