@@ -70,9 +70,10 @@ elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID 
   else ()  # Release
     list(APPEND fortran_flags
       -no-wrap-margin
-      -O3
+      -O5
       -align array64byte
       -qopenmp
+      -unroll=8
       # -fp-model precise
     )
   endif ()

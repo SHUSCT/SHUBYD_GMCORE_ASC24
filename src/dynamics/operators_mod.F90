@@ -889,7 +889,7 @@ contains
     real(r8), intent(in) :: dt
     integer, intent(in) :: substep
 
-    real(r8) b
+    real(r8) b1, b2
     integer i, j, k
 
     ! if (substep < total_substeps) then
@@ -907,21 +907,23 @@ contains
                pv     => block%aux%pv    , & ! in
                pv_lon => block%aux%pv_lon, & ! out
                pv_lat => block%aux%pv_lat)   ! out
+    b1 = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
+    b2 = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
     select case (upwind_order_pv)
     case (1)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
           do i = mesh%half_ids, mesh%half_ide
-            b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
-            pv_lon%d(i,j,k) = b * upwind1(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-1:j,k)) + &
-                              (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
+            !b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
+            pv_lon%d(i,j,k) = b1 * upwind1(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-1:j,k)) + &
+                              (1 - b1) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
           end do
         end do
         do j = mesh%half_jds, mesh%half_jde
           do i = mesh%full_ids, mesh%full_ide
-            b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
-            pv_lat%d(i,j,k) = b * upwind1(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-1:i,j,k)) + &
-                              (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
+            !b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
+            pv_lat%d(i,j,k) = b2 * upwind1(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-1:i,j,k)) + &
+                              (1 - b2) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
           end do
         end do
       end do
@@ -929,16 +931,16 @@ contains
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
           do i = mesh%half_ids, mesh%half_ide
-            b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
-            pv_lon%d(i,j,k) = b * upwind3(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-2:j+1,k)) + &
-                              (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
+            !b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
+            pv_lon%d(i,j,k) = b1 * upwind3(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-2:j+1,k)) + &
+                              (1 - b1) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
           end do
         end do
         do j = mesh%half_jds, mesh%half_jde
           do i = mesh%full_ids, mesh%full_ide
-            b  = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
-            pv_lat%d(i,j,k) = b * upwind3(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-2:i+1,j,k)) + &
-                              (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
+            !b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
+            pv_lat%d(i,j,k) = b2 * upwind3(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-2:i+1,j,k)) + &
+                              (1 - b2) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
           end do
         end do
       end do
@@ -946,16 +948,16 @@ contains
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
           do i = mesh%half_ids, mesh%half_ide
-            b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
-            pv_lon%d(i,j,k) = b * upwind5(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-3:j+2,k)) + &
-                              (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
+            !b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
+            pv_lon%d(i,j,k) = b1 * upwind5(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-3:j+2,k)) + &
+                              (1 - b1) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
           end do
         end do
         do j = mesh%half_jds, mesh%half_jde
           do i = mesh%full_ids, mesh%full_ide
-            b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
-            pv_lat%d(i,j,k) = b * upwind5(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-3:i+2,j,k)) + &
-                              (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
+            !b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
+            pv_lat%d(i,j,k) = b2 * upwind5(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-3:i+2,j,k)) + &
+                              (1 - b2) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
           end do
         end do
       end do
