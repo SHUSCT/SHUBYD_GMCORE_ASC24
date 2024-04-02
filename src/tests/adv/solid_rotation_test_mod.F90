@@ -9,6 +9,7 @@ module solid_rotation_test_mod
   use tracer_mod
 
   implicit none
+  include "mkl.fi"
 
   public solid_rotation_test_init
   public solid_rotation_test_set_ic
@@ -128,8 +129,8 @@ contains
 
       deallocate(coslat, sinlat, coslon, sinlon)
 
-      allocate(coslon(full_ids:full_ide))
       allocate(sinlon(full_ids:full_ide))
+      allocate(sinlat(half_jds:half_jde))
       
       call vdsin(len3, mesh%half_lat(half_jds:half_jde), sinlat)
       call vdsin(len4, mesh%full_lon(full_ids:full_ide), sinlon)
@@ -144,7 +145,7 @@ contains
       call fill_halo(v)
       mfy%d = v%d
       end associate
-      deallocate(coslon, sinlon)
+      deallocate(sinlat, sinlon)
     end do
 
   end subroutine solid_rotation_test_set_uv
