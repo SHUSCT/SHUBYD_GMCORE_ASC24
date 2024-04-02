@@ -414,6 +414,7 @@ contains
 
     integer ks, ke, i, j, k, iu, ju, ci
     real(r8) cf, s1, s2, ds1, ds2, ds3, ml, dm, m6
+    real(r8), allocatable :: cflxabs(:,:,:), cflyabs(:,:,:)
 
     associate (mesh => u%mesh    , &
                cflx => batch%cflx, & ! in
@@ -422,13 +423,17 @@ contains
     case ('cell', 'lev')
       ks = merge(mesh%full_kds, mesh%half_kds, batch%loc == 'cell')
       ke = merge(mesh%full_kde, mesh%half_kde, batch%loc == 'cell')
+      allocate(cflxabs(ke-ks+1,mesh%full_jde_no_pole-mesh%full_jds_no_pole+1,mesh%half_ide-mesh%half_ids+1))
+      call vdabs((ke-ks+1)*(mesh%full_jde_no_pole-mesh%full_jds_no_pole+1)*(mesh%half_ide-mesh%half_ids+1), cflx%d, cflxabs)
+      allocate(cflyabs(ke-ks+1,mesh%half_jde-mesh%half_jds+1,mesh%full_ide-mesh%full_ids+1))
+      call vdabs((ke-ks+1)*(mesh%half_jde-mesh%half_jds+1)*(mesh%full_ide-mesh%full_ids+1), cfly%d, cflyabs)
       do k = ks, ke
         ! Along x-axis
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
           do i = mesh%half_ids, mesh%half_ide
             ci = int(cflx%d(i,j,k))
             cf = cflx%d(i,j,k) - ci
-            if (abs(cflx%d(i,j,k)) < 1.0e-16_r8) then
+            if (cflxabs(i,j,k) < 1.0e-16_r8) then
               mfx%d(i,j,k) = 0
             else if (cflx%d(i,j,k) > 0) then
               iu = i - ci
@@ -454,7 +459,7 @@ contains
         ! Along y-axis
         do j = mesh%half_jds, mesh%half_jde
           do i = mesh%full_ids, mesh%full_ide
-            if (abs(cfly%d(i,j,k)) < 1.0e-16_r8) then
+            if (cflyabs(i,j,k) < 1.0e-16_r8) then
               mfy%d(i,j,k) = 0
             else if (cfly%d(i,j,k) > 0) then
               ju = j
