@@ -371,7 +371,7 @@ contains
         do k = mesh%full_kds, mesh%full_kde
           do j = mesh%full_jds, mesh%full_jde
             do i = mesh%full_ids, mesh%full_ide
-              tqv = (tqv + dmg%d(i,j,k) * q%d(i,j,k,idx_qv) * mesh%area_cell(j))*2
+              tqv = tqv + dmg%d(i,j,k) * q%d(i,j,k,idx_qv) * mesh%area_cell(j)
             end do
           end do
         end do
