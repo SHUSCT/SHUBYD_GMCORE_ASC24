@@ -73,7 +73,7 @@ contains
 
     integer iblk, i, j
     real(r8) lon, lat
-    integer len1, len2, len3, full_jds_no_pole, full_jde_no_pole, half_ids, half_ide, half_jds, half_jde, full_ids, full_ide
+    integer len1, len2, len3, len4, full_jds_no_pole, full_jde_no_pole, half_ids, half_ide, half_jds, half_jde, full_ids, full_ide
 
     do iblk = 1, size(blocks)
       associate (block   => blocks(iblk)                    , &
