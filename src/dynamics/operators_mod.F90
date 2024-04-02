@@ -926,30 +926,22 @@ contains
         end do
       end do
     case (3)
-      !$omp parallel do private(b)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-          !$omp do
           do i = mesh%half_ids, mesh%half_ide
             b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
             pv_lon%d(i,j,k) = b * upwind3(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-2:j+1,k)) + &
-                            (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
+                              (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
           end do
-          !$omp end do
         end do
-
         do j = mesh%half_jds, mesh%half_jde
-          !$omp do
           do i = mesh%full_ids, mesh%full_ide
             b  = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
             pv_lat%d(i,j,k) = b * upwind3(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-2:i+1,j,k)) + &
-                            (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
+                              (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
           end do
-          !$omp end do
         end do
       end do
-      !$omp end parallel do
-
     case (5)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
