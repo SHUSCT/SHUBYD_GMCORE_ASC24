@@ -10,7 +10,7 @@ module moving_vortices_test_mod
   use tracer_mod
 
   implicit none
-
+  include "mkl.fi"
   private
 
   public moving_vortices_test_init
@@ -78,7 +78,7 @@ contains
 
     real(r8), intent(in) :: time_in_seconds
     integer, intent(in) :: itime
-    real(8), allocatable :: clat(:), clon(:), slat(:), slon(:),dlon(:),cdlon(:),sdlon(:)
+    real(8), allocatable :: clat(:), clon(:), slat(:), slon(:),dlon(:),cdlon(:),sdlon(:),lonv1d(:)
     real(8) calpha, salpha, slatv, clatv
 
     integer iblk, i, j
@@ -114,25 +114,30 @@ contains
       allocate(dlon(half_ids:half_ide))
       allocate(cdlon(half_ids:half_ide))
       allocate(sdlon(half_ids:half_ide))
+      allocate(lonv1d(half_ids:half_ide))
+      lonv1d(half_ids:half_ide) = lonv
       call vdcos(len1, mesh%full_lat(full_jds_no_pole:full_jde_no_pole), clat)
       call vdcos(len2, mesh%half_lon(half_ids:half_ide), clon)
       call vdsin(len1, mesh%full_lat(full_jds_no_pole:full_jde_no_pole), slat)
       call vdsin(len2, mesh%half_lon(half_ids:half_ide), slon)
-      call vdsub(len2, mesh%half_lon(half_ids:half_ide), lonv, dlon)
+      call vdsub(len2, mesh%half_lon(half_ids:half_ide), lonv1d(half_ids:half_ide), dlon)
       call vdcos(len2, dlon(half_ids:half_ide), cdlon)
       calpha = cos(alpha)
       salpha = sin(alpha)
       slatv = sin(latv)
       clatv = cos(latv)
       do j = full_jds_no_pole, full_jde_no_pole
+        lat = mesh%half_lat(j)
         do i = half_ids, half_ide
+          lon = mesh%full_lon(i)
+          call rotate(lonv, latv, lon, lat, lat_r=latr)
           ! u%d(i,j,1) = u0 * (cos(lat) * cos(alpha) + sin(lat) * cos(lon) * sin(alpha)) + &
           !              a_omg(latr) * (sin(latv) * cos(lat) - cos(latv) * cos(dlon) * sin(lat))
-          u%d(i,j,1) = u0 * clat(j) * calpha + slat(j) * clon(i) * salpha + &
+          u%d(i,j,1) = u0 * (clat(j) * calpha + slat(j) * clon(i) * salpha) + &
                        a_omg(latr) * (slatv * clat(j) - clatv * cdlon(i) * slat(j))
         end do
       end do
-      deallocate(clat,clon,slat,slon,dlon,cdlon,sdlon)
+      deallocate(clat,clon,slat,slon,dlon,cdlon,sdlon,lonv1d)
       call fill_halo(u)
       mfx%d = u%d * dmg_lon%d
       len1 = mesh%half_jde - mesh%half_jds + 1
@@ -145,8 +150,10 @@ contains
       allocate(slon(full_ids:full_ide))
       allocate(dlon(full_ids:full_ide))
       allocate(sdlon(full_ids:full_ide))
+      allocate(lonv1d(full_ids:full_ide))
+      lonv1d(full_ids:full_ide) = lonv
       call vdsin(len2,mesh%full_lon(full_ids:full_ide),slon)
-      call vdsub(len2,mesh%full_lon(full_ids:full_ide),lonv,dlon)
+      call vdsub(len2,mesh%full_lon(full_ids:full_ide),lonv1d(full_ids:full_ide),dlon)
       call vdsin(len2,dlon(full_ids:full_ide),sdlon)
       do j = half_jds, half_jde
         lat = mesh%half_lat(j)
@@ -157,7 +164,7 @@ contains
           v%d(i,j,1) = -u0 * slon(i) * salpha + a_omg(latr) * clatv * sdlon(i)
         end do
       end do
-      deallocate(slon,dlon,sdlon)
+      deallocate(slon,dlon,sdlon,lonv1d)
       call fill_halo(v)
       mfy%d = v%d * dmg_lat%d
       end associate
