@@ -67,34 +67,24 @@ elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID 
       -traceback
       -fp-model precise
     )
-  else ()  # Release
+  else () # Release
     list(APPEND fortran_flags
       -no-wrap-margin
-      -O3
+      -O5
       -align array64byte
       -qopenmp
       -fp-model precise
-      -fast
-      -qmkl=sequential
     )
   endif ()
   if (CMAKE_Fortran_COMPILER_VERSION GREATER 2021.1)
     list(APPEND fortran_flags -qmkl=sequential)
   else ()
-    list(APPEND fortran_flags -mkl=sequential)
+    list(APPEND fortran_flags -qmkl=sequential -diag-disable=10448)
   endif ()
 endif ()
 string(REPLACE ";" " " CMAKE_Fortran_FLAGS "${fortran_flags}")
 
 find_package(MPI)
-if (MPI_Fortran_FOUND)
-  include_directories(${MPI_Fortran_INCLUDE_PATH})
-  set(EXTERNAL_LIBS ${EXTERNAL_LIBS} ${MPI_Fortran_LIBRARIES})
-  add_definitions(-DHAS_MPI)
-  message(STATUS "MPI is found.")
-else ()
-  message(FATAL_ERROR "MPI is not found.")
-endif ()
 
 if (DEFINED ENV{NETCDF} AND (NOT DEFINED ENV{NETCDF_ROOT}))
   set(ENV{NETCDF_ROOT} $ENV{NETCDF})

@@ -1,0 +1,10 @@
+&gmcore_control
+  nlon                 = 180
+  nlat                 = 90
+  run_days             = 50
+  dt_dyn               = 480
+  test_case            = 'mountain_zonal_flow'
+  case_name            = 'swm_mz.180x90'
+  history_interval     = '1 days'
+  output_h0_new_file   = 'one_file'
+/
