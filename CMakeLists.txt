@@ -74,8 +74,6 @@ elseif (CMAKE_Fortran_COMPILER_ID STREQUAL "Intel" OR CMAKE_Fortran_COMPILER_ID 
       -align array64byte
       -qopenmp
       -fp-model precise
-      -fast
-      -qmkl=sequential
     )
   endif ()
   if (CMAKE_Fortran_COMPILER_VERSION GREATER 2021.1)
