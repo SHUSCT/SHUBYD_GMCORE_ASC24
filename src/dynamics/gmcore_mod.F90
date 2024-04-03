@@ -364,7 +364,6 @@ contains
         do j = mesh%full_jds, mesh%full_jde
           do i = mesh%full_ids, mesh%full_ide
             tm  = tm  + dmg%d(i,j,k) * mesh%area_cell(j)
-            if (idx_qv > 0) tqv = tqv + dmg%d(i,j,k) * q%d(i,j,k,idx_qv) * mesh%area_cell(j)
           end do
         end do
       end do
