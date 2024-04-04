@@ -117,7 +117,12 @@ contains
         if (ngrid(j) > 1) then
           n  = ngrid(j)
           hn = (n - 1) / 2
-          do i = is, ie
+          expand-loop
+          do i = is, ie - 2, 2
+            tmp(i) = sum(wgt(:n,j) * x%d(i-hn:i+hn,j,k))
+            tmp(i+1) = sum(wgt(:n,j) * x%d(i+1-hn:i+1+hn,j,k))
+          end do
+          do i = ie - mod(ie-is+1,2) - 1, ie
             tmp(i) = sum(wgt(:n,j) * x%d(i-hn:i+hn,j,k))
           end do
           if (present(y)) then
