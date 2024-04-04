@@ -12,7 +12,7 @@ module formula_mod
   use const_mod
 
   implicit none
-
+  include "mkl.fi"
   private
 
   public wet_mixing_ratio
@@ -72,8 +72,9 @@ contains
     real(r8), intent(in) :: pt  ! Modified potential temperature (K)
     real(r8), intent(in) :: p   ! Full pressure (Pa)
     real(r8), intent(in) :: qv  ! Dry mixing ratio of water vapor (kg kg-1)
-
-    res = pt * (p / p0)**rd_o_cpd / (1 + rv_o_rd * qv)
+    real(8) :: pow
+    call vdpow(1, p / p0, rd_o_cpd, pow)
+    res = pt * pow / (1 + rv_o_rd * qv)
 
   end function temperature
 
