@@ -462,7 +462,7 @@ contains
       ! Diagnose horizontal mass flux divergence.
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-          do i = mesh%full_ids, mesh%full_ide - 8, 8
+          do i = mesh%full_ids, mesh%full_ide - 7, 8
             dmf%d(i,j,k) = ((                     &
               mfx%d(i,j,k) - mfx%d(i-1,j,k)       &
             ) * mesh%le_lon(j) + (                &
@@ -512,7 +512,7 @@ contains
               mfy%d(i+7,j-1,k) * mesh%le_lat(j-1)   &
             )) / mesh%area_cell(j)
           end do
-          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 8) + 1, mesh%full_ide
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids, 8), mesh%full_ide
             dmf%d(i,j,k) = ((                     &
               mfx%d(i,j,k) - mfx%d(i-1,j,k)       &
             ) * mesh%le_lon(j) + (                &
