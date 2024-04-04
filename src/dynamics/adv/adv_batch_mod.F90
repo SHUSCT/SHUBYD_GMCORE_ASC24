@@ -673,7 +673,7 @@ contains
 
     select case (this%loc)
     case ('cell')
-      call vdlinearfrac((mesh%half_kde-mesh%half_kds-1)*(mesh%full_jde-mesh%full_jds+1)*(mesh%full_kde-mesh%full_kds+1),we%d,mz%d,1._r8,0._r8,dt,0._r8,cflz%d)
+      call vdlinearfrac((mesh%half_kde-mesh%half_kds-1)*(mesh%full_jde-mesh%full_jds+1)*(mesh%full_kde-mesh%full_kds+1),we%d,mz%d,dt,0._r8,1._r8,0._r8,cflz%d)
       ! do k = mesh%half_kds + 1, mesh%half_kde - 1
       !   do j = mesh%full_jds, mesh%full_jde
       !     do i = mesh%full_ids, mesh%full_ide
@@ -682,7 +682,7 @@ contains
       !   end do
       ! end do
     case ('lev')
-      call vdlinearfrac((mesh%full_ide-mesh%full_ids+1)*(mesh%full_jde-mesh%full_jds+1)*(mesh%full_kde-mesh%full_kds+1),we%d,mz%d,1._r8,0._r8,dt,0._r8,cflz%d)
+      call vdlinearfrac((mesh%full_ide-mesh%full_ids+1)*(mesh%full_jde-mesh%full_jds+1)*(mesh%full_kde-mesh%full_kds+1),we%d,mz%d,dt,0._r8,1._r8,0._r8,cflz%d)
       ! do k = mesh%full_kds, mesh%full_kde
       !   do j = mesh%full_jds, mesh%full_jde
       !     do i = mesh%full_ids, mesh%full_ide
