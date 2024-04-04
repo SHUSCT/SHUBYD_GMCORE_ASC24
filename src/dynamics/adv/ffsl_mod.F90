@@ -414,7 +414,6 @@ contains
 
     integer ks, ke, i, j, k, iu, ju, ci
     real(r8) cf, s1, s2, ds1, ds2, ds3, ml, dm, m6
-    real(r8), allocatable :: cflxabs(:,:,:), cflyabs(:,:,:)
 
     associate (mesh => u%mesh    , &
                cflx => batch%cflx, & ! in
@@ -423,17 +422,13 @@ contains
     case ('cell', 'lev')
       ks = merge(mesh%full_kds, mesh%half_kds, batch%loc == 'cell')
       ke = merge(mesh%full_kde, mesh%half_kde, batch%loc == 'cell')
-      allocate(cflxabs(ke-ks+1,mesh%full_jde_no_pole-mesh%full_jds_no_pole+1,mesh%half_ide-mesh%half_ids+1))
-      call vdabs((ke-ks+1)*(mesh%full_jde_no_pole-mesh%full_jds_no_pole+1)*(mesh%half_ide-mesh%half_ids+1), cflx%d, cflxabs)
-      allocate(cflyabs(ke-ks+1,mesh%half_jde-mesh%half_jds+1,mesh%full_ide-mesh%full_ids+1))
-      call vdabs((ke-ks+1)*(mesh%half_jde-mesh%half_jds+1)*(mesh%full_ide-mesh%full_ids+1), cfly%d, cflyabs)
       do k = ks, ke
         ! Along x-axis
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-          do i = mesh%half_ids, mesh%half_ide
+          do i = mesh%half_ids, mesh%half_ide - 1, 2
             ci = int(cflx%d(i,j,k))
             cf = cflx%d(i,j,k) - ci
-            if (cflxabs(i,j,k) < 1.0e-16_r8) then
+            if (abs(cflx%d(i,j,k)) < 1.0e-16_r8) then
               mfx%d(i,j,k) = 0
             else if (cflx%d(i,j,k) > 0) then
               iu = i - ci
@@ -454,33 +449,58 @@ contains
               ds3 = s2**3 - s1**3
               mfx%d(i,j,k) = -u%d(i,j,k) * (sum(mx%d(i+1:iu-1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i,j,k)
             end if
-          end do
-        end do
-        ! Along y-axis
-        do j = mesh%half_jds, mesh%half_jde
-          do i = mesh%full_ids, mesh%full_ide
-            if (cflyabs(i,j,k) < 1.0e-16_r8) then
-              mfy%d(i,j,k) = 0
-            else if (cfly%d(i,j,k) > 0) then
-              ju = j
-              call ppm(my%d(i,ju-2,k), my%d(i,ju-1,k), my%d(i,ju,k), my%d(i,ju+1,k), my%d(i,ju+2,k), ml, dm, m6)
-              s1 = 1 - cfly%d(i,j,k)
+
+            ci = int(cflx%d(i + 1,j,k))
+            cf = cflx%d(i + 1,j,k) - ci
+            if (abs(cflx%d(i + 1,j,k)) < 1.0e-16_r8) then
+              mfx%d(i + 1,j,k) = 0
+            else if (cflx%d(i + 1,j,k) > 0) then
+              iu = i + 1 - ci
+              call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
+              s1 = 1 - cf
               s2 = 1
               ds1 = s2    - s1
               ds2 = s2**2 - s1**2
               ds3 = s2**3 - s1**3
-              mfy%d(i,j,k) =  v%d(i,j,k) * (ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cfly%d(i,j,k)
-            else if (cfly%d(i,j,k) < 0) then
-              ju = j + 1
-              call ppm(my%d(i,ju-2,k), my%d(i,ju-1,k), my%d(i,ju,k), my%d(i,ju+1,k), my%d(i,ju+2,k), ml, dm, m6)
+              mfx%d(i + 1,j,k) =  u%d(i + 1,j,k) * (sum(mx%d(iu+1:i + 1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i + 1,j,k)
+            else
+              iu = i + 1 - ci + 1
+              call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
               s1 = 0
-              s2 = -cfly%d(i,j,k)
+              s2 = -cf
               ds1 = s2    - s1
               ds2 = s2**2 - s1**2
               ds3 = s2**3 - s1**3
-              mfy%d(i,j,k) = -v%d(i,j,k) * (ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cfly%d(i,j,k)
+              mfx%d(i + 1,j,k) = -u%d(i + 1,j,k) * (sum(mx%d(i+2:iu-1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i + 1,j,k)
             end if
-          end do
+
+        end do
+        
+        do i = mesh%half_ide - mod(mesh%half_ide - mesh%half_ids, 2), mesh%half_ide
+            ci = int(cflx%d(i,j,k))
+            cf = cflx%d(i,j,k) - ci
+            if (abs(cflx%d(i,j,k)) < 1.0e-16_r8) then
+              mfx%d(i,j,k) = 0
+            else if (cflx%d(i,j,k) > 0) then
+              iu = i - ci
+              call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
+              s1 = 1 - cf
+              s2 = 1
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfx%d(i,j,k) =  u%d(i,j,k) * (sum(mx%d(iu+1:i,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i,j,k)
+            else
+              iu = i - ci + 1
+              call ppm(mx%d(iu-2,j,k), mx%d(iu-1,j,k), mx%d(iu,j,k), mx%d(iu+1,j,k), mx%d(iu+2,j,k), ml, dm, m6)
+              s1 = 0
+              s2 = -cf
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfx%d(i,j,k) = -u%d(i,j,k) * (sum(mx%d(i+1:iu-1,j,k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflx%d(i,j,k)
+            end if
+        end do
         end do
       end do
     case ('vtx')
