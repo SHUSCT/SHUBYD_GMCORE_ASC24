@@ -189,7 +189,13 @@ contains
     pkh_lev%d(:,:,k) = ph_lev%d(:,:,k)**rd_o_cpd
     do k = mesh%half_kds + 1, mesh%half_kde
       do j = mesh%full_jds, mesh%full_jde + merge(0, 1, mesh%has_north_pole())
-        do i = mesh%full_ids, mesh%full_ide + 1
+        do i = mesh%full_ids, mesh%full_ide - 1, 2
+          ph_lev%d(i,j,k) = ph_lev%d(i,j,k-1) + dmg%d(i,j,k-1) * (1 + qm%d(i,j,k-1))
+          pkh_lev%d(i,j,k) = ph_lev%d(i,j,k)**rd_o_cpd
+          ph_lev%d(i+1,j,k) = ph_lev%d(i+1,j,k-1) + dmg%d(i+1,j,k-1) * (1 + qm%d(i+1,j,k-1))
+          pkh_lev%d(i+1,j,k) = ph_lev%d(i+1,j,k)**rd_o_cpd
+        end do
+        do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids, 2), mesh%full_ide + 1
           ph_lev%d(i,j,k) = ph_lev%d(i,j,k-1) + dmg%d(i,j,k-1) * (1 + qm%d(i,j,k-1))
           pkh_lev%d(i,j,k) = ph_lev%d(i,j,k)**rd_o_cpd
         end do
@@ -227,7 +233,11 @@ contains
                p_lev => dstate%p_lev)   ! out
     do k = mesh%full_kds, mesh%full_kde
       do j = mesh%full_jds, mesh%full_jde + merge(0, 1, mesh%has_north_pole())
-        do i = mesh%full_ids, mesh%full_ide + 1
+        do i = mesh%full_ids, mesh%full_ide - 1, 2
+          p%d(i,j,k) = p0 * (Rd * pt%d(i,j,k) * rhod%d(i,j,k) / p0)**cpd_o_cvd
+          p%d(i+1,j,k) = p0 * (Rd * pt%d(i+1,j,k) * rhod%d(i+1,j,k) / p0)**cpd_o_cvd
+        end do
+        do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids, 2), mesh%full_ide + 1
           p%d(i,j,k) = p0 * (Rd * pt%d(i,j,k) * rhod%d(i,j,k) / p0)**cpd_o_cvd
         end do
       end do
@@ -294,7 +304,13 @@ contains
     if (idx_qv > 0) then
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds, mesh%full_jde + merge(0, 1, mesh%has_north_pole())
-          do i = mesh%full_ids, mesh%full_ide + 1
+          do i = mesh%full_ids, mesh%full_ide - 1, 2
+            t%d(i,j,k) = temperature(pt%d(i,j,k), ph%d(i,j,k), q%d(i,j,k,idx_qv))
+            tv%d(i,j,k) = virtual_temperature_from_modified_potential_temperature(pt%d(i,j,k), ph%d(i,j,k)**rd_o_cpd, q%d(i,j,k,idx_qv))
+            t%d(i+1,j,k) = temperature(pt%d(i+1,j,k), ph%d(i+1,j,k), q%d(i+1,j,k,idx_qv))
+            tv%d(i+1,j,k) = virtual_temperature_from_modified_potential_temperature(pt%d(i+1,j,k), ph%d(i+1,j,k)**rd_o_cpd, q%d(i+1,j,k,idx_qv))
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids, 2), mesh%full_ide + 1
             t%d(i,j,k) = temperature(pt%d(i,j,k), ph%d(i,j,k), q%d(i,j,k,idx_qv))
             tv%d(i,j,k) = virtual_temperature_from_modified_potential_temperature(pt%d(i,j,k), ph%d(i,j,k)**rd_o_cpd, q%d(i,j,k,idx_qv))
           end do
@@ -394,11 +410,23 @@ contains
                ke   => block%aux%ke)   ! out
     do k = mesh%full_kds, mesh%full_kde
       do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole + merge(0, 1, mesh%has_north_pole())
-        do i = mesh%full_ids, mesh%full_ide + 1
+        do i = mesh%full_ids, mesh%full_ide - 1, 2
           ke%d(i,j,k) = (mesh%area_lon_west (j  ) * u%d(i-1,j  ,k)**2 + &
                          mesh%area_lon_east (j  ) * u%d(i  ,j  ,k)**2 + &
                          mesh%area_lat_north(j-1) * v%d(i  ,j-1,k)**2 + &
                          mesh%area_lat_south(j  ) * v%d(i  ,j  ,k)**2   &
+                        ) / mesh%area_cell(j)
+          ke%d(i+1,j,k) = (mesh%area_lon_west (j  ) * u%d(i  ,j  ,k)**2 + &
+                           mesh%area_lon_east (j  ) * u%d(i+1,j  ,k)**2 + &
+                           mesh%area_lat_north(j-1) * v%d(i+1,j-1,k)**2 + &
+                           mesh%area_lat_south(j  ) * v%d(i+1,j  ,k)**2   &
+                        ) / mesh%area_cell(j)
+        end do
+        do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids, 2), mesh%full_ide + 1
+            ke%d(i,j,k) = (mesh%area_lon_west (j  ) * u%d(i-1,j  ,k)**2 + &
+                           mesh%area_lon_east (j  ) * u%d(i  ,j  ,k)**2 + &
+                           mesh%area_lat_north(j-1) * v%d(i  ,j-1,k)**2 + &
+                           mesh%area_lat_south(j  ) * v%d(i  ,j  ,k)**2   &
                         ) / mesh%area_cell(j)
         end do
       end do
@@ -429,7 +457,65 @@ contains
       !
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole + merge(0, 1, mesh%has_north_pole())
-          do i = mesh%full_ids, mesh%full_ide + 1
+          do i = mesh%full_ids, mesh%full_ide - 1, 2
+            ke_vtx(1) = (                                    &
+              mesh%area_lat_east (j  ) * v%d(i-1,j  ,k)**2 + &
+              mesh%area_lat_west (j  ) * v%d(i  ,j  ,k)**2 + &
+              mesh%area_lon_north(j  ) * u%d(i-1,j  ,k)**2 + &
+              mesh%area_lon_south(j+1) * u%d(i-1,j+1,k)**2   &
+            ) / mesh%area_vtx(j)
+            ke_vtx(2) = (                                    &
+              mesh%area_lat_east (j-1) * v%d(i-1,j-1,k)**2 + &
+              mesh%area_lat_west (j-1) * v%d(i  ,j-1,k)**2 + &
+              mesh%area_lon_north(j-1) * u%d(i-1,j-1,k)**2 + &
+              mesh%area_lon_south(j  ) * u%d(i-1,j  ,k)**2   &
+            ) / mesh%area_vtx(j-1)
+            ke_vtx(3) = (                                    &
+              mesh%area_lat_east (j-1) * v%d(i  ,j-1,k)**2 + &
+              mesh%area_lat_west (j-1) * v%d(i+1,j-1,k)**2 + &
+              mesh%area_lon_north(j-1) * u%d(i  ,j-1,k)**2 + &
+              mesh%area_lon_south(j  ) * u%d(i  ,j  ,k)**2   &
+            ) / mesh%area_vtx(j-1)
+            ke_vtx(4) = (                                    &
+              mesh%area_lat_east (j  ) * v%d(i  ,j  ,k)**2 + &
+              mesh%area_lat_west (j  ) * v%d(i+1,j  ,k)**2 + &
+              mesh%area_lon_north(j  ) * u%d(i  ,j  ,k)**2 + &
+              mesh%area_lon_south(j+1) * u%d(i  ,j+1,k)**2   &
+            ) / mesh%area_vtx(j)
+            ke%d(i,j,k) = (1.0_r8 - ke_cell_wgt) * (             &
+              (ke_vtx(1) + ke_vtx(4)) * mesh%area_subcell(2,j) + &
+              (ke_vtx(2) + ke_vtx(3)) * mesh%area_subcell(1,j)   &
+            ) / mesh%area_cell(j) + ke_cell_wgt * ke%d(i,j,k)
+            ke_vtx(1) = (                                    &
+              mesh%area_lat_east (j  ) * v%d(i  ,j  ,k)**2 + &
+              mesh%area_lat_west (j  ) * v%d(i+1,j  ,k)**2 + &
+              mesh%area_lon_north(j  ) * u%d(i  ,j  ,k)**2 + &
+              mesh%area_lon_south(j+1) * u%d(i  ,j+1,k)**2   &
+            ) / mesh%area_vtx(j)
+            ke_vtx(2) = (                                    &
+              mesh%area_lat_east (j-1) * v%d(i  ,j-1,k)**2 + &
+              mesh%area_lat_west (j-1) * v%d(i+1,j-1,k)**2 + &
+              mesh%area_lon_north(j-1) * u%d(i  ,j-1,k)**2 + &
+              mesh%area_lon_south(j  ) * u%d(i  ,j  ,k)**2   &
+            ) / mesh%area_vtx(j-1)
+            ke_vtx(3) = (                                    &
+              mesh%area_lat_east (j-1) * v%d(i+1,j-1,k)**2 + &
+              mesh%area_lat_west (j-1) * v%d(i+2,j-1,k)**2 + &
+              mesh%area_lon_north(j-1) * u%d(i+1,j-1,k)**2 + &
+              mesh%area_lon_south(j  ) * u%d(i+1,j  ,k)**2   &
+            ) / mesh%area_vtx(j-1)
+            ke_vtx(4) = (                                    &
+              mesh%area_lat_east (j  ) * v%d(i+1,j  ,k)**2 + &
+              mesh%area_lat_west (j  ) * v%d(i+2,j  ,k)**2 + &
+              mesh%area_lon_north(j  ) * u%d(i+1,j  ,k)**2 + &
+              mesh%area_lon_south(j+1) * u%d(i+1,j+1,k)**2   &
+            ) / mesh%area_vtx(j)
+            ke%d(i+1,j,k) = (1.0_r8 - ke_cell_wgt) * (             &
+              (ke_vtx(1) + ke_vtx(4)) * mesh%area_subcell(2,j) +   &
+              (ke_vtx(2) + ke_vtx(3)) * mesh%area_subcell(1,j)     &
+            ) / mesh%area_cell(j) + ke_cell_wgt * ke%d(i+1,j,k)
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids, 2), mesh%full_ide + 1
             ke_vtx(1) = (                                    &
               mesh%area_lat_east (j  ) * v%d(i-1,j  ,k)**2 + &
               mesh%area_lat_west (j  ) * v%d(i  ,j  ,k)**2 + &
@@ -467,7 +553,11 @@ contains
     if (mesh%has_south_pole()) then
       j = mesh%full_jds
       do k = mesh%full_kds, mesh%full_kde
-        do i = mesh%full_ids, mesh%full_ide
+        do i = mesh%full_ids, mesh%full_ide - 2, 2
+          work(i,k) = 0.5_r8 * (v%d(i,j,k)**2 + block%aux%u_lat%d(i,j,k)**2)
+          work(i+1,k) = 0.5_r8 * (v%d(i+1,j,k)**2 + block%aux%u_lat%d(i+1,j,k)**2)
+        end do
+        do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 2) - 1, mesh%full_ide
           work(i,k) = 0.5_r8 * (v%d(i,j,k)**2 + block%aux%u_lat%d(i,j,k)**2)
         end do
       end do
@@ -482,7 +572,11 @@ contains
     if (mesh%has_north_pole()) then
       j = mesh%full_jde
       do k = mesh%full_kds, mesh%full_kde
-        do i = mesh%full_ids, mesh%full_ide
+        do i = mesh%full_ids, mesh%full_ide - 2, 2
+          work(i,k) = 0.5_r8 * (v%d(i,j-1,k)**2 + block%aux%u_lat%d(i,j-1,k)**2)
+          work(i+1,k) = 0.5_r8 * (v%d(i+1,j-1,k)**2 + block%aux%u_lat%d(i+1,j-1,k)**2)
+        end do
+        do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 2) - 1, mesh%full_ide
           work(i,k) = 0.5_r8 * (v%d(i,j-1,k)**2 + block%aux%u_lat%d(i,j-1,k)**2)
         end do
       end do
@@ -560,7 +654,21 @@ contains
       call fill_halo(div)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole + merge(0, 1, mesh%has_north_pole())
-          do i = mesh%full_ids, mesh%full_ide + 1
+          do i = mesh%full_ids, mesh%full_ide - 1, 2
+            div2%d(i,j,k) = (                                                                 &
+              div%d(i+1,j,k) - 2 * div%d(i,j,k) + div%d(i-1,j,k)                              &
+            ) / mesh%de_lon(j)**2 + (                                                         &
+              (div%d(i,j+1,k) - div%d(i,j  ,k)) * mesh%half_cos_lat(j  ) / mesh%de_lat(j  ) - &
+              (div%d(i,j  ,k) - div%d(i,j-1,k)) * mesh%half_cos_lat(j-1) / mesh%de_lat(j-1)   &
+            ) / mesh%le_lon(j) / mesh%full_cos_lat(j)
+            div2%d(i+1,j,k) = (                                                                 &
+              div%d(i+2,j,k) - 2 * div%d(i+1,j,k) + div%d(i,j,k)                              &
+            ) / mesh%de_lon(j)**2 + (                                                         &
+              (div%d(i+1,j+1,k) - div%d(i+1,j  ,k)) * mesh%half_cos_lat(j  ) / mesh%de_lat(j  ) - &
+              (div%d(i+1,j  ,k) - div%d(i+1,j-1,k)) * mesh%half_cos_lat(j-1) / mesh%de_lat(j-1)   &
+            ) / mesh%le_lon(j) / mesh%full_cos_lat(j)
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids, 2) + 2, mesh%full_ide + 1
             div2%d(i,j,k) = (                                                                 &
               div%d(i+1,j,k) - 2 * div%d(i,j,k) + div%d(i-1,j,k)                              &
             ) / mesh%de_lon(j)**2 + (                                                         &
@@ -911,14 +1019,30 @@ contains
     case (1)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-          do i = mesh%half_ids, mesh%half_ide
+          do i = mesh%half_ids, mesh%half_ide - 2, 2
+            b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
+            pv_lon%d(i,j,k) = b * upwind1(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-1:j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
+            b = abs(vt%d(i+1,j,k)) / (sqrt(un%d(i+1,j,k)**2 + vt%d(i+1,j,k)**2) + eps)
+            pv_lon%d(i+1,j,k) = b * upwind1(sign(1.0_r8, vt%d(i+1,j,k)), upwind_wgt_pv, pv%d(i+1,j-1:j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i+1,j-1,k) + pv%d(i+1,j,k))
+          end do
+          do i = mesh%half_ide - mod(mesh%half_ide - mesh%half_ids + 1, 2) - 1, mesh%half_ide
             b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
             pv_lon%d(i,j,k) = b * upwind1(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-1:j,k)) + &
                               (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
           end do
         end do
         do j = mesh%half_jds, mesh%half_jde
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide - 2, 2
+            b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
+            pv_lat%d(i,j,k) = b * upwind1(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-1:i,j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
+            b = abs(ut%d(i+1,j,k)) / (sqrt(ut%d(i+1,j,k)**2 + vn%d(i+1,j,k)**2) + eps)
+            pv_lat%d(i+1,j,k) = b * upwind1(sign(1.0_r8, ut%d(i+1,j,k)), upwind_wgt_pv, pv%d(i:i+1,j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i,j,k) + pv%d(i+1,j,k))
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 2) - 1, mesh%full_ide
             b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
             pv_lat%d(i,j,k) = b * upwind1(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-1:i,j,k)) + &
                               (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
@@ -928,14 +1052,30 @@ contains
     case (3)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-          do i = mesh%half_ids, mesh%half_ide
+          do i = mesh%half_ids, mesh%half_ide - 2, 2
+            b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
+            pv_lon%d(i,j,k) = b * upwind3(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-2:j+1,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
+            b = abs(vt%d(i+1,j,k)) / (sqrt(un%d(i+1,j,k)**2 + vt%d(i+1,j,k)**2) + eps)
+            pv_lon%d(i+1,j,k) = b * upwind3(sign(1.0_r8, vt%d(i+1,j,k)), upwind_wgt_pv, pv%d(i+1,j-2:j+1,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i+1,j-1,k) + pv%d(i+1,j,k))
+          end do
+          do i = mesh%half_ide - mod(mesh%half_ide - mesh%half_ids + 1, 2) - 1, mesh%half_ide
             b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
             pv_lon%d(i,j,k) = b * upwind3(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-2:j+1,k)) + &
                               (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
           end do
         end do
         do j = mesh%half_jds, mesh%half_jde
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide - 2, 2
+            b  = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
+            pv_lat%d(i,j,k) = b * upwind3(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-2:i+1,j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
+            b = abs(ut%d(i+1,j,k)) / (sqrt(ut%d(i+1,j,k)**2 + vn%d(i+1,j,k)**2) + eps)
+            pv_lat%d(i+1,j,k) = b * upwind3(sign(1.0_r8, ut%d(i+1,j,k)), upwind_wgt_pv, pv%d(i-1:i+2,j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i,j,k) + pv%d(i+1,j,k))
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 2) - 1, mesh%full_ide
             b  = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
             pv_lat%d(i,j,k) = b * upwind3(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-2:i+1,j,k)) + &
                               (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
@@ -945,14 +1085,30 @@ contains
     case (5)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-          do i = mesh%half_ids, mesh%half_ide
+          do i = mesh%half_ids, mesh%half_ide - 2, 2
+            b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
+            pv_lon%d(i,j,k) = b * upwind5(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-3:j+2,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
+            b = abs(vt%d(i+1,j,k)) / (sqrt(un%d(i+1,j,k)**2 + vt%d(i+1,j,k)**2) + eps)
+            pv_lon%d(i+1,j,k) = b * upwind5(sign(1.0_r8, vt%d(i+1,j,k)), upwind_wgt_pv, pv%d(i+1,j-3:j+2,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i+1,j-1,k) + pv%d(i+1,j,k))
+          end do
+          do i = mesh%half_ide - mod(mesh%half_ide - mesh%half_ids + 1, 2) - 1, mesh%half_ide
             b = abs(vt%d(i,j,k)) / (sqrt(un%d(i,j,k)**2 + vt%d(i,j,k)**2) + eps)
             pv_lon%d(i,j,k) = b * upwind5(sign(1.0_r8, vt%d(i,j,k)), upwind_wgt_pv, pv%d(i,j-3:j+2,k)) + &
                               (1 - b) * 0.5_r8 * (pv%d(i,j-1,k) + pv%d(i,j,k))
           end do
         end do
         do j = mesh%half_jds, mesh%half_jde
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide - 2, 2
+            b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
+            pv_lat%d(i,j,k) = b * upwind5(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-3:i+2,j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
+            b = abs(ut%d(i+1,j,k)) / (sqrt(ut%d(i+1,j,k)**2 + vn%d(i+1,j,k)**2) + eps)
+            pv_lat%d(i+1,j,k) = b * upwind5(sign(1.0_r8, ut%d(i+1,j,k)), upwind_wgt_pv, pv%d(i-2:i+3,j,k)) + &
+                              (1 - b) * 0.5_r8 * (pv%d(i,j,k) + pv%d(i+1,j,k))
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 2) - 1, mesh%full_ide
             b = abs(ut%d(i,j,k)) / (sqrt(ut%d(i,j,k)**2 + vn%d(i,j,k)**2) + eps)
             pv_lat%d(i,j,k) = b * upwind5(sign(1.0_r8, ut%d(i,j,k)), upwind_wgt_pv, pv%d(i-3:i+2,j,k)) + &
                               (1 - b) * 0.5_r8 * (pv%d(i-1,j,k) + pv%d(i,j,k))
