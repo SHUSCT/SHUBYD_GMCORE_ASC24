@@ -6,12 +6,13 @@ parser=argparse.ArgumentParser()
 parser.add_argument('-e', type=int, default=1, help='默认消除极小误差，=2时全部计算')
 parser.add_argument('-p', default=0,help='测试文件')
 parser.add_argument('-n', help='测试规模')
+parser.add_argument('-debug',default=0, help='输出每个参数的比对结果,debug = 1时输出，默认为0')
 args = parser.parse_args()
 
 def Check():
     pass
 
-def test(file_ref, file_test):
+def test(file_ref, file_test,m):
     #file_ref = './ref_data/adv_dcmip12.360x180/adv_dcmip12.360x180x60.h0.nc'  #标准答案路径
     #file_test = './ref_data/adv_dcmip12.360x180/adv_dcmip12.360x180x60.h0.nc' #测试结果路径
     dataset_ref = nc.Dataset(file_ref)
@@ -52,6 +53,8 @@ def test(file_ref, file_test):
         else:
             print('wrong!!!z:', sumref / item)
             flag = False
+        if m != 0:
+            print('z:', sumref / item)
         #q0:
         item = 0
         sumref = 0
@@ -70,6 +73,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q0:', sumref / item)
+        if m != 0:
+            print('q0:', sumref / item)
         #q1:
         item = 0
         sumref = 0
@@ -88,6 +93,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q1:', sumref / item)
+        if m != 0:
+            print('q1:', sumref / item)
         #q2:
         item = 0
         sumref = 0
@@ -106,6 +113,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q2:', sumref / item)
+        if m != 0:
+            print('q2:', sumref / item)
         #q3:
         item = 0
         sumref = 0
@@ -124,6 +133,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q3:', sumref / item)
+        if m != 0:
+            print('q3:', sumref / item)
         if flag == True:
             print(file_test + ': right')
         else:
@@ -160,6 +171,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!z:', sumref / item)
+        if m != 0:
+            print('z:', sumref / item)
         #q0:
         item = 0
         sumref = 0
@@ -178,6 +191,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q0:', sumref / item)
+        if m != 0:
+            print('q0:', sumref / item)
         #q1:
         item = 0
         sumref = 0
@@ -196,6 +211,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q1:', sumref / item)
+        if m != 0:
+            print('q1:', sumref / item)
         if flag == True:
             print(file_test + ': right')
         else:
@@ -242,6 +259,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!tm:', sumref / item)
+        if m != 0:
+            print('tm:', sumref / item)
         #te:
         item = 0
         sumref = 0
@@ -257,6 +276,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!te:', sumref / item)
+        if m != 0:
+            print('te:', sumref / item)
         #tpe:
         item = 0
         sumref = 0
@@ -272,6 +293,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!tpe:', sumref / item)
+        if m != 0:
+            print('tpe:', sumref / item)
         #u:
         item = 0
         sumref = 0
@@ -289,6 +312,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!u:', sumref / item)
+        if m != 0:
+            print('u:', sumref / item)
         #v:
         item = 0
         sumref = 0
@@ -306,6 +331,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!v:', sumref / item)
+        if m != 0:
+            print('v:', sumref / item)
         #z:
         item = 0
         sumref = 0
@@ -323,6 +350,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!z:', sumref / item)
+        if m != 0:
+            print('z:', sumref / item)
         #pv:
         item = 0
         sumref = 0
@@ -340,6 +369,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!pv:', sumref / item)
+        if m != 0:
+            print('pv:', sumref / item)
         #div:
         item = 0
         sumref = 0
@@ -357,6 +388,8 @@ def test(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!div:', sumref / item)
+        if m != 0:
+            print('div:', sumref / item)
         #zs:
         item = 0
         sumref = 0
@@ -378,6 +411,8 @@ def test(file_ref, file_test):
             print(file_test + ': right')
         else:
             print(file_test + ': wrong')
+        if m != 0:
+            print('zs:', sumref / item)
     else:
         print("This case doesn't surport now!")
     """
@@ -405,7 +440,7 @@ def test(file_ref, file_test):
 
     """
 
-def test_eli(file_ref, file_test):
+def test_eli(file_ref, file_test,mode):
     #file_ref = './ref_data/adv_dcmip12.360x180/adv_dcmip12.360x180x60.h0.nc'  #标准答案路径
     #file_test = './ref_data/adv_dcmip12.360x180/adv_dcmip12.360x180x60.h0.nc' #测试结果路径
     dataset_ref = nc.Dataset(file_ref)
@@ -448,6 +483,8 @@ def test_eli(file_ref, file_test):
         else:
             print('wrong!!!z:', sumref / item)
             flag = False
+        if m != 0:
+            print('z:', sumref / item)
         #q0:
         item = 0
         sumref = 0
@@ -468,6 +505,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q0:', sumref / item)
+        if m != 0:
+            print('q0:', sumref / item)
         #q1:
         item = 0
         sumref = 0
@@ -488,6 +527,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q1:', sumref / item)
+        if m != 0:
+            print('q1:', sumref / item)
         #q2:
         item = 0
         sumref = 0
@@ -508,6 +549,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q2:', sumref / item)
+        if m != 0:
+            print('q2:', sumref / item)
         #q3:
         item = 0
         sumref = 0
@@ -528,6 +571,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q3:', sumref / item)
+        if m != 0:
+            print('q3:', sumref / item)
         if flag == True:
             print(file_test + ': right')
         else:
@@ -566,6 +611,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!z:', sumref / item)
+        if m != 0:
+            print('z:', sumref / item)
         #q0:
         item = 0
         sumref = 0
@@ -586,6 +633,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q0:', sumref / item)
+        if m != 0:
+            print('q0:', sumref / item)
         #q1:
         item = 0
         sumref = 0
@@ -606,6 +655,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!q1:', sumref / item)
+        if m != 0:
+            print('q1:', sumref / item)
         if flag == True:
             print(file_test + ': right')
         else:
@@ -654,6 +705,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!tm:', sumref / item)
+        if m != 0:
+            print('tm:', sumref / item)
         #te:
         item = 0
         sumref = 0
@@ -671,6 +724,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!te:', sumref / item)
+        if m != 0:
+            print('te:', sumref / item)
         #tpe:
         item = 0
         sumref = 0
@@ -688,6 +743,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!tpe:', sumref / item)
+        if m != 0:
+            print('tpe:', sumref / item)
         #u:
         item = 0
         sumref = 0
@@ -707,6 +764,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!u:', sumref / item)
+        if m != 0:
+            print('u:', sumref / item)
         #v:
         item = 0
         sumref = 0
@@ -726,6 +785,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!v:', sumref / item)
+        if m != 0:
+            print('v:', sumref / item)
         #z:
         item = 0
         sumref = 0
@@ -745,6 +806,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!z:', sumref / item)
+        if m != 0:
+            print('z:', sumref / item)
         #pv:
         item = 0
         sumref = 0
@@ -764,6 +827,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!pv:', sumref / item)
+        if m != 0:
+            print('pv:', sumref / item)
         #div:
         item = 0
         sumref = 0
@@ -783,6 +848,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!div:', sumref / item)
+        if m != 0:
+            print('div:', sumref / item)
         #zs:
         item = 0
         sumref = 0
@@ -801,6 +868,8 @@ def test_eli(file_ref, file_test):
         else:
             flag = False
             print('wrong!!!zs:', sumref / item)
+        if m != 0:
+            print('zs:', sumref / item)
 
         if flag == True:
             print(file_test + ': right')
@@ -841,7 +910,7 @@ if __name__ == "__main__":
         'adv_dcmip12.360x180': 'adv_dcmip12.360x180x60.h0.nc', 'swm_rh.180x90': 'swm_rh.180x90.h0.nc', 'swm_rh.360x180' : 'swm_rh.360x180.h0.nc', \
         'swm_mz.180x90' : 'swm_mz.180x90.h0.nc', 'swm_mz.360x180' : 'swm_mz.360x180.h0.nc', 'swm_jz.180x90' : 'swm_jz.180x90.h0.nc', \
         'swm_jz.360x180': 'swm_jz.360x180.h0.nc'}
-        
+    
     if (args.e == 2):
         func = test
     else:
@@ -851,7 +920,7 @@ if __name__ == "__main__":
         if test_case in file_list.keys():
             ref_file = './ref_test/ref_data/' + test_case + '/' + file_list[test_case]
             test_file = folder_path + '/' + test_case + '/' + file_list[test_case]
-            func(ref_file, test_file)
+            func(ref_file, test_file, args.debug)
             print('Done!')
         else:
             print("文件名参数传递错误！")
@@ -859,7 +928,7 @@ if __name__ == "__main__":
         for file in file_list:
             ref_file = './ref_data/' + file + '/' + file_list[file]
             test_file = folder_path + '/' + file + '/' + file_list[file]
-            func(ref_file, test_file)
+            func(ref_file, test_file,args.debug)
         print('Done!')
 
 
