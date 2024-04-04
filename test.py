@@ -806,9 +806,6 @@ def test_eli(file_ref, file_test):
             print(file_test + ': right')
         else:
             print(file_test + ': wrong')
-    else:
-        print("This case doesn't surport now!")
-    """
     elif 'rh' in file_ref:
         flag = True
 
@@ -816,6 +813,9 @@ def test_eli(file_ref, file_test):
             print('right')
         else:
             print('wrong')
+    else:
+        print("This case doesn't surport now!")
+    """
     elif 'mz' in file_ref:
         flag = True
 
@@ -840,7 +840,7 @@ if __name__ == "__main__":
     file_list = {'adv_sr.360x180' : 'adv_sr.360x180.h0.nc', 'adv_mv.360x180' : 'adv_mv.360x180.h0.nc', 'adv_dc4.360x180':'adv_dc4.360x180.h0.nc', \
         'adv_dcmip12.360x180': 'adv_dcmip12.360x180x60.h0.nc', 'swm_rh.180x90': 'swm_rh.180x90.h0.nc', 'swm_rh.360x180' : 'swm_rh.360x180.h0.nc', \
         'swm_mz.180x90' : 'swm_mz.180x90.h0.nc', 'swm_mz.360x180' : 'swm_mz.360x180.h0.nc', 'swm_jz.180x90' : 'swm_jz.180x90.h0.nc', \
-        'swm_jz.360x180': 'swm_jz.360x180.h0.nc'}
+        'swm_jz.360x180': 'swm_jz.360x180.h0.nc', 'rh.180x90' : 'rh.180x90x26.h0.nc'}
         
     if (args.e == 2):
         func = test
