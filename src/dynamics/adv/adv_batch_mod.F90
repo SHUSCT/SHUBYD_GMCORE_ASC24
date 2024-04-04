@@ -661,6 +661,7 @@ contains
         end do
       end do
     case ('lev')
+      !$OMP PARALLEL DO PRIVATE(i,j,k)
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds, mesh%full_jde
           do i = mesh%full_ids, mesh%full_ide
@@ -668,6 +669,7 @@ contains
           end do
         end do
       end do
+      !$OMP END PARALLEL DO
     end select
     end associate
 
