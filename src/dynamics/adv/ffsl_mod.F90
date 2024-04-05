@@ -592,7 +592,59 @@ contains
     case ('cell')
       do k = mesh%half_kds + 1, mesh%half_kde - 1
         do j = mesh%full_jds, mesh%full_jde
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide - 2, 2
+            ci = int(cflz%d(i,j,k))
+            cf = cflz%d(i,j,k) - ci
+            if (abs(cflz%d(i,j,k)) < 1.0e-16_r8) then
+              mfz%d(i,j,k) = 0
+            else if (cflz%d(i,j,k) > 0) then
+              ku = k - ci - 1
+              ku = min(max(ku, mesh%full_kms + 2), mesh%full_kme - 2)
+              call ppm(m%d(i,j,ku-2), m%d(i,j,ku-1), m%d(i,j,ku), m%d(i,j,ku+1), m%d(i,j,ku+2), ml, dm, m6)
+              s1 = 1 - cf
+              s2 = 1
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i,j,k) =  w%d(i,j,k) * (sum(m%d(i,j,ku+1:k-1)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i,j,k)
+            else
+              ku = k - ci
+              ku = min(max(ku, mesh%full_kms + 2), mesh%full_kme - 2)
+              call ppm(m%d(i,j,ku-2), m%d(i,j,ku-1), m%d(i,j,ku), m%d(i,j,ku+1), m%d(i,j,ku+2), ml, dm, m6)
+              s1 = 0
+              s2 = -cf
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i,j,k) = -w%d(i,j,k) * (sum(m%d(i,j,k:ku-1)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i,j,k)
+            end if
+            ci = int(cflz%d(i+1,j,k))
+            cf = cflz%d(i+1,j,k) - ci
+            if (abs(cflz%d(i+1,j,k)) < 1.0e-16_r8) then
+              mfz%d(i+1,j,k) = 0
+            else if (cflz%d(i+1,j,k) > 0) then
+              ku = k - ci - 1
+              ku = min(max(ku, mesh%full_kms + 2), mesh%full_kme - 2)
+              call ppm(m%d(i+1,j,ku-2), m%d(i+1,j,ku-1), m%d(i+1,j,ku), m%d(i+1,j,ku+1), m%d(i+1,j,ku+2), ml, dm, m6)
+              s1 = 1 - cf
+              s2 = 1
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i+1,j,k) =  w%d(i+1,j,k) * (sum(m%d(i+1,j,ku+1:k-1)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i+1,j,k)
+            else
+              ku = k - ci
+              ku = min(max(ku, mesh%full_kms + 2), mesh%full_kme - 2)
+              call ppm(m%d(i+1,j,ku-2), m%d(i+1,j,ku-1), m%d(i+1,j,ku), m%d(i+1,j,ku+1), m%d(i+1,j,ku+2), ml, dm, m6)
+              s1 = 0
+              s2 = -cf
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i+1,j,k) = -w%d(i+1,j,k) * (sum(m%d(i+1,j,k:ku-1)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i+1,j,k)
+            end if
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 2) - 1, mesh%full_ide
             ci = int(cflz%d(i,j,k))
             cf = cflz%d(i,j,k) - ci
             if (abs(cflz%d(i,j,k)) < 1.0e-16_r8) then
@@ -624,7 +676,55 @@ contains
     case ('lev')
       do k = mesh%full_kds, mesh%full_kde
         do j = mesh%full_jds, mesh%full_jde
-          do i = mesh%full_ids, mesh%full_ide
+          do i = mesh%full_ids, mesh%full_ide - 2, 2
+            ci = int(cflz%d(i,j,k))
+            cf = cflz%d(i,j,k) - ci
+            if (abs(cflz%d(i,j,k)) < 1.0e-16_r8) then
+              mfz%d(i,j,k) = 0
+            else if (cflz%d(i,j,k) > 0) then
+              ku = k - ci
+              call ppm(m%d(i,j,ku-2), m%d(i,j,ku-1), m%d(i,j,ku), m%d(i,j,ku+1), m%d(i,j,ku+2), ml, dm, m6)
+              s1 = 1 - cf
+              s2 = 1
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i,j,k) =  w%d(i,j,k) * (sum(m%d(i,j,ku+1:k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i,j,k)
+            else
+              ku = k - ci + 1
+              call ppm(m%d(i,j,ku-2), m%d(i,j,ku-1), m%d(i,j,ku), m%d(i,j,ku+1), m%d(i,j,ku+2), ml, dm, m6)
+              s1 = 0
+              s2 = -cf
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i,j,k) = -w%d(i,j,k) * (sum(m%d(i,j,k+1:ku-1)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i,j,k)
+            end if
+            ci = int(cflz%d(i+1,j,k))
+            cf = cflz%d(i+1,j,k) - ci
+            if (abs(cflz%d(i+1,j,k)) < 1.0e-16_r8) then
+              mfz%d(i+1,j,k) = 0
+            else if (cflz%d(i+1,j,k) > 0) then
+              ku = k - ci
+              call ppm(m%d(i+1,j,ku-2), m%d(i+1,j,ku-1), m%d(i+1,j,ku), m%d(i+1,j,ku+1), m%d(i+1,j,ku+2), ml, dm, m6)
+              s1 = 1 - cf
+              s2 = 1
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i+1,j,k) =  w%d(i+1,j,k) * (sum(m%d(i+1,j,ku+1:k)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i+1,j,k)
+            else
+              ku = k - ci + 1
+              call ppm(m%d(i+1,j,ku-2), m%d(i+1,j,ku-1), m%d(i+1,j,ku), m%d(i+1,j,ku+1), m%d(i+1,j,ku+2), ml, dm, m6)
+              s1 = 0
+              s2 = -cf
+              ds1 = s2    - s1
+              ds2 = s2**2 - s1**2
+              ds3 = s2**3 - s1**3
+              mfz%d(i+1,j,k) = -w%d(i+1,j,k) * (sum(m%d(i+1,j,k+1:ku-1)) + ml * ds1 + 0.5_r8 * dm * ds2 + m6 * (ds2 / 2.0_r8 - ds3 / 3.0_r8)) / cflz%d(i+1,j,k)
+            end if
+          end do
+          do i = mesh%full_ide - mod(mesh%full_ide - mesh%full_ids + 1, 2) - 1, mesh%full_ide
             ci = int(cflz%d(i,j,k))
             cf = cflz%d(i,j,k) - ci
             if (abs(cflz%d(i,j,k)) < 1.0e-16_r8) then
