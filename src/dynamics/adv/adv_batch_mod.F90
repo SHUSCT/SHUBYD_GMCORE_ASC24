@@ -613,19 +613,19 @@ contains
            de_lat_3d(i,:,k) = mesh%de_lat
         end do
       end do
-      call vdlinearfrac((mesh%half_ide-mesh%half_ids+2)*(mesh%full_jde_no_pole-mesh%full_jds_no_pole+1)*(ke-ks+1),u%d,de_lon_3d,dt,0._r8,1._r8,0._r8,cflx%d)
-      call vdlinearfrac((mesh%full_ide-mesh%full_ids+1)*(mesh%half_jde-mesh%half_jds - merge(0, 1, mesh%has_south_pole())+1)*(ke-ks+1),v%d,de_lat_3d,dt,0._r8,1._r8,0._r8,cfly%d)
+      ! call vdlinearfrac((mesh%half_ide-mesh%half_ids+2)*(mesh%full_jde_no_pole-mesh%full_jds_no_pole+1)*(ke-ks+1),u%d,de_lon_3d,dt,0._r8,1._r8,0._r8,cflx%d)
+      ! call vdlinearfrac((mesh%full_ide-mesh%full_ids+1)*(mesh%half_jde-mesh%half_jds - merge(0, 1, mesh%has_south_pole())+1)*(ke-ks+1),v%d,de_lat_3d,dt,0._r8,1._r8,0._r8,cfly%d)
       do k = ks, ke
-        ! do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
-        !   do i = mesh%half_ids - 1, mesh%half_ide
-        !     cflx%d(i,j,k) = u%d(i,j,k) * dt / mesh%de_lon(j)
-        !   end do
-        ! end do
-        ! do j = mesh%half_jds - merge(0, 1, mesh%has_south_pole()), mesh%half_jde
-        !   do i = mesh%full_ids, mesh%full_ide
-        !     cfly%d(i,j,k) = v%d(i,j,k) * dt / mesh%de_lat(j)
-        !   end do
-        ! end do
+        do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
+          do i = mesh%half_ids - 1, mesh%half_ide
+            cflx%d(i,j,k) = u%d(i,j,k) * dt / mesh%de_lon(j)
+          end do
+        end do
+        do j = mesh%half_jds - merge(0, 1, mesh%has_south_pole()), mesh%half_jde
+          do i = mesh%full_ids, mesh%full_ide
+            cfly%d(i,j,k) = v%d(i,j,k) * dt / mesh%de_lat(j)
+          end do
+        end do
         do j = mesh%half_jds - merge(0, 1, mesh%has_south_pole()), mesh%half_jde
           do i = mesh%full_ids, mesh%full_ide
             cfly%d(i,j,k) = v%d(i,j,k) * dt / mesh%de_lat(j)
