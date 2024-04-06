@@ -582,6 +582,7 @@ contains
     real(r8) work(this%u%mesh%full_ids:this%u%mesh%full_ide,this%u%mesh%half_nlev)
     real(r8) pole(this%u%mesh%half_nlev)
     integer ks, ke, i, j, k
+    real(8), allocatable, dimension(:,:,:) :: de_lon_3d,de_lat_3d
 
     associate (mesh => this%u%mesh, &
                dt   => this%dt    , &
@@ -600,10 +601,29 @@ contains
     case ('cell', 'lev')
       ks = merge(mesh%full_kds, mesh%half_kds, this%loc == 'cell')
       ke = merge(mesh%full_kde, mesh%half_kde, this%loc == 'cell')
+      allocate(de_lon_3d(mesh%half_ids-1:mesh%half_ide, mesh%full_jds_no_pole:mesh%full_jde_no_pole,ks:ke))
+      allocate(de_lat_3d(mesh%full_ids:mesh%full_ide, mesh%half_jds-merge(0, 1, mesh%has_south_pole()):mesh%half_jde,ks:ke))
+      do k = ks,ke
+        do i = mesh%half_ids - 1, mesh%half_ide
+           de_lon_3d(i,:,k) = mesh%de_lon
+        end do
+      end do
+      do k = ks,ke
+        do i = mesh%full_ids, mesh%full_ide
+           de_lat_3d(i,:,k) = mesh%de_lat
+        end do
+      end do
+      ! call vdlinearfrac((mesh%half_ide-mesh%half_ids+2)*(mesh%full_jde_no_pole-mesh%full_jds_no_pole+1)*(ke-ks+1),u%d,de_lon_3d,dt,0._r8,1._r8,0._r8,cflx%d)
+      ! call vdlinearfrac((mesh%full_ide-mesh%full_ids+1)*(mesh%half_jde-mesh%half_jds - merge(0, 1, mesh%has_south_pole())+1)*(ke-ks+1),v%d,de_lat_3d,dt,0._r8,1._r8,0._r8,cfly%d)
       do k = ks, ke
         do j = mesh%full_jds_no_pole, mesh%full_jde_no_pole
           do i = mesh%half_ids - 1, mesh%half_ide
             cflx%d(i,j,k) = u%d(i,j,k) * dt / mesh%de_lon(j)
+          end do
+        end do
+        do j = mesh%half_jds - merge(0, 1, mesh%has_south_pole()), mesh%half_jde
+          do i = mesh%full_ids, mesh%full_ide
+            cfly%d(i,j,k) = v%d(i,j,k) * dt / mesh%de_lat(j)
           end do
         end do
         do j = mesh%half_jds - merge(0, 1, mesh%has_south_pole()), mesh%half_jde
@@ -653,21 +673,23 @@ contains
 
     select case (this%loc)
     case ('cell')
-      do k = mesh%half_kds + 1, mesh%half_kde - 1
-        do j = mesh%full_jds, mesh%full_jde
-          do i = mesh%full_ids, mesh%full_ide
-            cflz%d(i,j,k) = we%d(i,j,k) / mz%d(i,j,k) * dt
-          end do
-        end do
-      end do
+      call vdlinearfrac((mesh%half_kde-mesh%half_kds-1)*(mesh%full_jde-mesh%full_jds+1)*(mesh%full_kde-mesh%full_kds+1),we%d,mz%d,dt,0._r8,1._r8,0._r8,cflz%d)
+      ! do k = mesh%half_kds + 1, mesh%half_kde - 1
+      !   do j = mesh%full_jds, mesh%full_jde
+      !     do i = mesh%full_ids, mesh%full_ide
+      !       cflz%d(i,j,k) = we%d(i,j,k) / mz%d(i,j,k) * dt
+      !     end do
+      !   end do
+      ! end do
     case ('lev')
-      do k = mesh%full_kds, mesh%full_kde
-        do j = mesh%full_jds, mesh%full_jde
-          do i = mesh%full_ids, mesh%full_ide
-            cflz%d(i,j,k) = we%d(i,j,k) / mz%d(i,j,k) * dt
-          end do
-        end do
-      end do
+      call vdlinearfrac((mesh%full_ide-mesh%full_ids+1)*(mesh%full_jde-mesh%full_jds+1)*(mesh%full_kde-mesh%full_kds+1),we%d,mz%d,dt,0._r8,1._r8,0._r8,cflz%d)
+      ! do k = mesh%full_kds, mesh%full_kde
+      !   do j = mesh%full_jds, mesh%full_jde
+      !     do i = mesh%full_ids, mesh%full_ide
+      !       cflz%d(i,j,k) = we%d(i,j,k) / mz%d(i,j,k) * dt
+      !     end do
+      !   end do
+      ! end do
     end select
     end associate
 
